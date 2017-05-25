@@ -8,6 +8,8 @@
 # /bin/bash prot.sh --specs test/dir/\*.js   - run in start mode (means kill service and start again, then run tests)
 # /bin/bash prot.sh test --specs test/dir/\*.js - run in test mode (run just test if services are running)
 
+# WARNING: with --specs parameter use rather \* wildcard then just *
+
 ARGSNUM=$#;
 
 if [ "$1" = "test" ]; then
@@ -60,8 +62,17 @@ else
         sleep 4
     fi
 
-    echo "protractor conf.js $ARGS" | tr '*' '\*' | /bin/bash
+    CMD=$(echo "protractor conf.js $ARGS" | sed 's/*/\\\*/g')
+
+    echo $CMD | /bin/bash
+
+    EX=$?
+
+    echo "----------------------------------"
+    echo "executed command:"
+    echo '>' $CMD
+    echo "exit code:" $EX
 
     # return status code from phpunit for jenkins
-    exit $?;
+    exit $EX;
 fi
