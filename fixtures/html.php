@@ -8,7 +8,7 @@
     <title>Fixture php</title>
 </head>
 <body>
-    <div>init.</div>
+    <button>execute</button>
 
     <pre></pre>
 
@@ -18,42 +18,60 @@
 
             var log = (function () {
                 var pre = document.querySelector('pre');
-
-                return function (msg) {
-                    pre.innerHTML = msg + "\n" + pre.innerHTML;
+                return function () {
+                    var a = Array.prototype.slice.call(arguments);
+                    if (a.length > 1) {
+                        a = JSON.stringify(Array.prototype.slice.call(arguments), null, '    ')
+                    }
+                    else {
+                        a = a[0];
+                    }
+                    pre.innerHTML = a + "\n" + pre.innerHTML;
                 }
             }());
 
+            document.querySelector('button').addEventListener('click', function () {
 
+                // input data;
+                var input = ('0123456789abcdefghijklmnoprstuwxyz'.repeat(10)).split('');
 
-            (function (input, output) {
-                output = [];
-                return (function chain() {
-                    return new Promise(function (resolve, reject) {
-                        var v = input.pop();
-                        log('new promise: ' + v)
-                        setTimeout(function () {
-                            resolve(v + '-processed');
-                        }, 300);
-                    }).then(function (r) {
-                        log('then: ' + r)
-                        return input.length ? chain() : output.concat([r]);
+                // how many simultanious request
+                var limit = 3;
+
+                // final callback
+                function callback(data) {
+                    log('finally: ', data)
+                }
+
+                // method to process one piece of data
+                function execute(v) {
+                    return $.ajax('http://hub.vagrant8/block.php?' + v).then(function () {
+                        return v;
                     });
-                }());
-            }('1234'.split(''))).then(function (data) {
-                console.log('finally: ', data)
+                }
+
+                (function (input, limit) {
+                    var output = [], count = 0;
+                    return new Promise(function (resolve) {
+                        function next() {
+                            if (!input.length) {
+                                return resolve(output);
+                            }
+                            if (count < limit) {
+                                count += 1;
+                                var v = input.shift();
+                                execute(v).then(function (data) {
+                                    count -= 1;
+                                    output = output.concat([data]);
+                                    next();
+                                });
+                                next();
+                            }
+                        }
+                        next();
+                    });
+                }(input, limit, execute)).then(callback);
             });
-
-
-            for (var i = 0 ; i < 5 ; i += 1 ) {
-                $.ajax('/fixtures/block.php').then(function (data) {
-                    k.push(i);
-                    data.i = this;
-                    log(JSON.stringify(data));
-                })
-            }
-
-            console.log(k.join(','));
 
         });
     </script>

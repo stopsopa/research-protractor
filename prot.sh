@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# run as sudo one of commands
 # /bin/bash prot.sh         - only kills selenium and php server
 # /bin/bash prot.sh start   - kills selenim and php servers, runs them again, and execute tests
 # /bin/bash prot.sh test    - run selenium and php server if its not running and execute tests - most convenient to run again and again
@@ -9,6 +10,13 @@
 # /bin/bash prot.sh test --specs test/dir/\*.js - run in test mode (run just test if services are running)
 
 # WARNING: with --specs parameter use rather \* wildcard then just *
+
+USER=$(whoami)
+
+if [ $USER != 'root' ]; then
+    cat $0 | head -n 13 | tail -n 11
+    exit 1;
+fi
 
 ARGSNUM=$#;
 
@@ -33,11 +41,17 @@ ISRUNNING=$(ps aux | grep 'selenium-server-standalone' | grep -v grep);
 
 if [ "$ISRUNNING" != "" ] && [ "$TEST" != "test" ]; then
 
-    echo "> stopping selenium service";
+    echo ""
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+    echo "vvvvvvvvvvv stopping selenium service vvvvvvvvvvv";
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
     kill -9 $(ps aux | grep 'selenium-server-standalone' | grep -v grep | awk '{print $2}') &> /dev/null
     kill $(ps aux | grep 'selenium-server-standalone' | grep -v grep | awk '{print $2}') &> /dev/null
 
-    echo "> stopping php service";
+    echo ""
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+    echo "vvvvvvvvvvv stopping php service vvvvvvvvvvv";
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
     kill $(ps aux | grep 'php -S' | grep -v grep) &> /dev/null
     kill $(ps aux | grep 'php -S' | grep -v grep) &> /dev/null
 fi
@@ -48,27 +62,44 @@ if [ "$ARGSNUM" -lt 1 ] ; then
 	echo "> call: /bin/bash $0 test";
 else
 
-    ISRUNNING=$(ps aux | grep 'php -S' | grep -v grep);
+    ISRUNNING=$(ps aux | grep 'selenium-server-standalone' | grep -v grep);
 
     if [ "$ISRUNNING" = "" ]; then
 
-        echo "> starting php server"
+        echo "";
+        echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+        echo "vvvvvvvvvvv starting php server vvvvvvvvvvv";
+        echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
         php -S localhost:80 & disown
         sleep 1
 
+        if [ ! -e node_modules/webdriver-manager/selenium ]; then
+            node node_modules/protractor/bin/webdriver-manager update
+        fi
+
         # first install globally webdriver, follow: http://www.protractortest.org/#/
-        echo "> starting selenium server"
-        webdriver-manager start & disown
+        echo "";
+        echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+        echo "vvvvvvvvvvv starting selenium server vvvvvvvvvvv";
+        echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+        # nun before
+        # sudo node node_modules/protractor/bin/webdriver-manager update
+        node node_modules/protractor/bin/webdriver-manager start & disown
         sleep 4
     fi
 
-    CMD=$(echo "protractor conf.js $ARGS" | sed 's/*/\\\*/g')
+    CMD=$(echo "node node_modules/protractor/bin/protractor conf.js $ARGS" | sed 's/*/\\\*/g')
 
+    echo "";
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+    echo "vvvvvvvvvvv executing tests vvvvvvvvvvv";
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
     echo $CMD | /bin/bash
 
     EX=$?
 
-    echo "----------------------------------"
+    echo "";
+    echo "---------------- summary ------------------"
     echo "executed command:"
     echo '>' $CMD
     echo "exit code:" $EX
