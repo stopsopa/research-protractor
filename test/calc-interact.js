@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * http://www.protractortest.org/#/tutorial#step-1-interacting-with-elements
  */
@@ -14,7 +16,7 @@ describe('Protractor Demo App', function() {
         // by.binding('latest') to find the element bound to the variable latest. This finds the span containing {{latest}}
         expect(element(by.binding('latest')).getText()).toEqual('3');
 
-        setTimeout(done, 15000);
+        setTimeout(done, 8000);
     });
 });
 

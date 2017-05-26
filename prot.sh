@@ -2,10 +2,10 @@
 
 # run as sudo one of commands
 # /bin/bash prot.sh         - only kills selenium and php server
-# /bin/bash prot.sh start   - kills selenim and php servers, runs them again, and execute tests
-# /bin/bash prot.sh test    - run selenium and php server if its not running and execute tests - most convenient to run again and again
+# /bin/bash prot.sh start   - kills selenium and php servers, runs them again, and execute tests
+# /bin/bash prot.sh test    - run selenium and php server if its not running and execute tests - most convenient to run tests again and again
 
-# /bin/bash prot.sh test --specs test/calc-multiple.js  - execute only one script (you can pass this way more arguments for native protractor)
+# /bin/bash prot.sh test --specs test/calc-multiple.js  - execute only one script (you can pass this way more arguments for native protractor command)
 # /bin/bash prot.sh --specs test/dir/\*.js   - run in start mode (means kill service and start again, then run tests)
 # /bin/bash prot.sh test --specs test/dir/\*.js - run in test mode (run just test if services are running)
 

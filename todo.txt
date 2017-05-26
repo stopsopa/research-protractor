@@ -1,0 +1,3 @@
+- inject domain parameter (and others from parameter.yml) - DONE
+- run dev tools in browser
+- don't kill browser parameter
