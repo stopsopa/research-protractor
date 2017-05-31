@@ -1,7 +1,7 @@
 'use strict';
 
 function test() {
-    return document.querySelector('div').innerHTML;
+    return (window.protractor && window.protractor.eventkey) ? window.protractor.eventkey : null;
 }
 
 /**
@@ -14,13 +14,17 @@ describe('Protractor Demo App', function() {
 
         browser.waitForAngularEnabled(false);
 
-        browser.get('/fixtures/html.php' /* , timeout:int */);
+        browser.get('/fixtures/event.php' /* , timeout:int */);
+
+        element(by.css('button')).click();
+
+        browser.wait(protractor.ExpectedConditions.textToBePresentInElement($('pre'), 'finally: '), 10000);
 
         browser.executeScript(test).then(function (data) {
 
-            console.log('data '.repeat(10), JSON.stringify(data));
+            data.test = 'it is object indeed';
 
-            // console.log('key: ', protractor.Key);
+            console.log('data '.repeat(10), JSON.stringify(data));
 
             // http://www.protractortest.org/#/api-overview#global-variables
             expect(data).toEqual('lorem ipsum...');

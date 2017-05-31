@@ -35,7 +35,9 @@ exports.config = {
     ],
     baseUrl: config.parameters.protocol + '://' + config.parameters.host,
     onPrepare: function() {
+
         global.config = config;
+
         // and from now on use in tests 'browser.config.param1' to get access to params from config object above
 
         // you can also login user here
@@ -44,5 +46,17 @@ exports.config = {
         //     https://github.com/angular/protractor/blob/master/spec/withLoginConf.js
 
         // good idea probably would be to get user and password under browser.user and browser.pass
+
+
+        // extending buildin conditions
+        protractor.ExpectedConditions.jsCheck = function (script) {
+            return this.and(() => {
+                return browser.executeScript(script)
+            });
+        }
+        //
+        //
+        // textToBePresentInElement(elementFinder: ElementFinder, text: string): Function {
+        // }
     }
 };
