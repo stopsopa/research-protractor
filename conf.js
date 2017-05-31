@@ -63,6 +63,15 @@ exports.config = {
             });
         };
 
+        /**
+         * In test you can wait for js data like:
+         *      browser.waitJs('eventkey' [, 10000]).then(function (data) { ... });
+         */
+        browser.waitJs = function (fn, timeout) {
+            browser.wait(protractor.ExpectedConditions.jsCheck(fn), timeout);
+            return browser.executeScript(fn);
+        };
+
         (function () {
 
             function createFunction(name) {
@@ -80,15 +89,6 @@ exports.config = {
             protractor.ExpectedConditions.event = function (name) {
                 return protractor.ExpectedConditions.jsCheck(createFunction(name));
             }
-
-            /**
-             * In test you can wait for js data like:
-             *      browser.waitJs('eventkey' [, 10000]).then(function (data) { ... });
-             */
-            browser.waitJs = function (fn, timeout) {
-                browser.wait(protractor.ExpectedConditions.jsCheck(fn), timeout);
-                return browser.executeScript(fn);
-            };
 
             /**
              * in browser when you call:
