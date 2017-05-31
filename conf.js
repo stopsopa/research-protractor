@@ -51,7 +51,7 @@ exports.config = {
          * use example
          * function test() {
          *    // return something "truthy"
-         *    return (window.protractor && window.protractor.eventkey) ? window.protractor.eventkey : null;
+         *    return (window.protractor && window.protractor['eventname']) ? window.protractor['eventname'] : null;
          * }
          * browser.wait(protractor.ExpectedConditions.jsCheck(test), 10000);
          */
@@ -74,9 +74,23 @@ exports.config = {
 
         (function () {
 
-            function createFunction(name) {
-                var fn = 'return (window.protractor && window.protractor[name]) ? window.protractor[name] : null;';
-                fn = fn.replace(/\[name\]/g, "['" + name + "']");
+            function createFunction(name, del) {
+
+                del = (typeof del === 'undefined') ? false : true;
+
+                var fn = `
+if (window.protractor && window.protractor[name]) {
+    var ret = window.protractor[name];
+    delete window.protractor[name];
+    return ret;
+}
+return false;
+`;
+                if (!del) {
+                    fn = fn.replace('delete window.protractor[name];', '');
+                }
+
+                fn = fn.replace(/[\r\n]/g, '').replace(/[\r\n\s]{2,}/g, ' ').replace(/\[name\]/g, "['" + name + "']");
                 return Function(fn);
             }
             /**
@@ -98,7 +112,8 @@ exports.config = {
              *      browser.waitEvent('eventkey' [, 10000]).then(function (data) { ... });
              */
             browser.waitEvent = function (name, timeout) {
-                return browser.waitJs(createFunction(name), timeout);
+                browser.wait(protractor.ExpectedConditions.jsCheck(createFunction(name)), timeout);
+                return browser.executeScript(createFunction(name, true));
             };
         }())
 

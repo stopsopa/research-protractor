@@ -1,9 +1,5 @@
 'use strict';
 
-function test() {
-    return (window.protractor && window.protractor.eventkey) ? window.protractor.eventkey : null;
-}
-
 /**
  * http://blog.ng-book.com/executing-raw-javascript-in-protractor/
  */
@@ -18,9 +14,7 @@ describe('Protractor Demo App', function() {
 
         element(by.css('button')).click();
 
-        browser.wait(protractor.ExpectedConditions.event('eventkey'), 10000);
-
-        browser.executeScript(test).then(function (data) {
+        browser.waitEvent('eventkey', 10000).then(function (data) {
 
             data.test = 'it is object indeed';
 

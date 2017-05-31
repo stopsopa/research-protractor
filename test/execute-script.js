@@ -8,6 +8,7 @@ function test() {
  * http://blog.ng-book.com/executing-raw-javascript-in-protractor/
  */
 describe('Protractor Demo App', function() {
+
     it('should add one and two', function(done) {
 
         browser.ignoreSynchronization = true;
