@@ -6,7 +6,7 @@
 describe('Protractor Demo App', function() {
     it('should add one and two', function(done) {
 
-        browser.get('http://juliemr.github.io/protractor-demo/');
+        browser.get('http://juliemr.github.io/protractor-demo/' /* , timeout:int */);
 
         element(by.css('[ng-model="first"]')).sendKeys(1);
         element(by.css('[ng-model="second"]')).sendKeys(2);

@@ -5,11 +5,11 @@
 # /bin/bash prot.sh start   - kills selenium and php servers, runs them again, and execute tests
 # /bin/bash prot.sh test    - run selenium and php server if its not running and execute tests - most convenient to run tests again and again
 
-# /bin/bash prot.sh test --specs test/calc-multiple.js  - execute only one script (you can pass this way more arguments for native protractor command)
-# /bin/bash prot.sh --specs test/dir/\*.js   - run in start mode (means kill service and start again, then run tests)
-# /bin/bash prot.sh test --specs test/dir/\*.js - run in test mode (run just test if services are running)
+# /bin/bash prot.sh test --specs test/calc-multiple.js      - execute only one script (you can pass this way more arguments for native protractor command)
+# /bin/bash prot.sh --specs test/dir/\*.js                  - run in 'start' mode (means kill service and start again, then run tests)
+# /bin/bash prot.sh test --specs test/dir/\*.js             - run in 'test' mode (run just test if services are running)
 
-# WARNING: with --specs parameter use rather \* wildcard then just *
+# WARNING: with --specs parameter use rather \* wildcard then just * because * is resolved in bash shell but \* is resolved by protractor itself
 
 USER=$(whoami)
 
@@ -57,9 +57,7 @@ if [ "$ISRUNNING" != "" ] && [ "$TEST" != "test" ]; then
 fi
 
 if [ "$ARGSNUM" -lt 1 ] ; then
-	echo "> call: /bin/bash $0 start";
-	echo 'or to run only tests:';
-	echo "> call: /bin/bash $0 test";
+    cat $0 | head -n 13 | tail -n 11
 else
 
     ISRUNNING=$(ps aux | grep 'selenium-server-standalone' | grep -v grep);
@@ -94,14 +92,18 @@ else
     echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
     echo "vvvvvvvvvvv executing tests vvvvvvvvvvv";
     echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+
     echo $CMD | /bin/bash
 
     EX=$?
 
     echo "";
-    echo "---------------- summary ------------------"
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+    echo "vvvvvvvvvvvvvvvvvv summary vvvvvvvvvvvvvvvvvvvvv";
+    echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
     echo "executed command:"
     echo '>' $CMD
+    echo '> INFO: if you want to use browser.pause() run this command manually'
     echo "exit code:" $EX
 
     # return status code from phpunit for jenkins

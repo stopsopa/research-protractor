@@ -10,7 +10,7 @@ describe('Protractor Demo App', function() {
     console.log("-".repeat(50) + "\n" + "-".repeat(50) + "\n" + "-".repeat(50) + "\n" + "-".repeat(50) + "\n");
 
     beforeEach(function() {
-        browser.get('http://juliemr.github.io/protractor-demo/');
+        browser.get('http://juliemr.github.io/protractor-demo/' /* , timeout:int */);
     });
 
     it('should have a title', function(done) {

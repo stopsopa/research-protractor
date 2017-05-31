@@ -8,9 +8,11 @@
     <title>Fixture php</title>
 </head>
 <body>
-    <button>execute</button>
+    <button id="bid">execute</button>
 
     <pre></pre>
+
+    <div>lorem ipsum...</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
@@ -30,10 +32,33 @@
                 }
             }());
 
+            var manipulation = {
+                after: function (referenceNode, newNode) {
+                    return this.before(referenceNode.nextSibling, newNode);
+                },
+                before: function (referenceNode, newNode) {
+                    referenceNode.parentNode.insertBefore(newNode, referenceNode);
+                    return this;
+                },
+                append: function (parentNode, newNode) {
+                    parentNode.appendChild(newNode);
+                    return this;
+                },
+                prepend: function (parentNode, newNode) {
+                    parentNode.insertBefore(newNode, parentNode.firstChild);
+                    return this;
+                },
+                remove: function (node) {
+                    node.parentNode.removeChild(node);
+                    return this;
+                }
+            };
+
             document.querySelector('button').addEventListener('click', function () {
 
                 // input data;
-                var input = ('0123456789abcdefghijklmnoprstuwxyz'.repeat(10)).split('');
+//                var input = ('0123456789abcdefghijklmnoprstuwxyz'.repeat(1)).split('');
+                var input = ('01234'.repeat(1)).split('');
 
                 // how many simultanious request
                 var limit = 3;
@@ -41,38 +66,65 @@
                 // final callback
                 function callback(data) {
                     log('finally: ', data)
+                    var div = document.createElement('div');
+                    div.setAttribute('id', 'done');
+                    div.innerHTML = 'done...';
+                    manipulation.append(document.body, div);
                 }
 
                 // method to process one piece of data
                 function execute(v) {
-                    return $.ajax('http://hub.vagrant8/block.php?' + v).then(function () {
+                    return $.ajax('/fixtures/block.php?' + v).then(function () {
+                        log(v + ' processed')
                         return v;
                     });
                 }
 
-                (function (input, limit) {
+                (function (input, execute, limit) {
                     var output = [], count = 0;
+                    (limit < 1) && (limit = 1);
                     return new Promise(function (resolve) {
-                        function next() {
-                            if (!input.length) {
-                                return resolve(output);
-                            }
-                            if (count < limit) {
-                                count += 1;
-                                var v = input.shift();
-                                execute(v).then(function (data) {
-                                    count -= 1;
-                                    output = output.concat([data]);
+                        (function next() {
+                            if (input.length) {
+                                if (count < limit) {
+                                    count += 1;
+                                    execute(input.shift()).then(function (data) {
+                                        output = output.concat([data]);
+                                        count -= 1;
+                                        next();
+                                    });
                                     next();
-                                });
-                                next();
+                                }
+                                return;
                             }
-                        }
-                        next();
+                            count || resolve(output);
+                        }());
                     });
-                }(input, limit, execute)).then(callback);
+                }(input, execute, limit)).then(callback);
             });
 
+
+//            (function () {
+//
+//                var target = document.querySelector('pre');
+//
+//                // create an observer instance
+//                var observer = new MutationObserver(function(mutations) {
+//                    mutations.forEach(function(mutation) {
+//                        console.log(mutation);
+//                    });
+//                });
+//
+//                // configuration of the observer:
+//                var config = { attributes: true, childList: true, characterData: true };
+//
+//                // pass in the target node, as well as the observer options
+//                observer.observe(target, config);
+//
+//                // later, you can stop observing
+////                observer.disconnect();
+//
+//            }());
         });
     </script>
 </body>
