@@ -47,16 +47,60 @@ exports.config = {
 
         // good idea probably would be to get user and password under browser.user and browser.pass
 
-
-        // extending buildin conditions
+        /**
+         * use example
+         * function test() {
+         *    // return something "truthy"
+         *    return (window.protractor && window.protractor.eventkey) ? window.protractor.eventkey : null;
+         * }
+         * browser.wait(protractor.ExpectedConditions.jsCheck(test), 10000);
+         */
         protractor.ExpectedConditions.jsCheck = function (script) {
             return this.and(() => {
-                return browser.executeScript(script)
+                return browser.executeScript(script).then((data) => {
+                    return !!data;
+                })
             });
-        }
-        //
-        //
-        // textToBePresentInElement(elementFinder: ElementFinder, text: string): Function {
-        // }
+        };
+
+        (function () {
+
+            function createFunction(name) {
+                var fn = 'return (window.protractor && window.protractor[name]) ? window.protractor[name] : null;';
+                fn = fn.replace(/\[name\]/g, "['" + name + "']");
+                return Function(fn);
+            }
+            /**
+             * in browser when you call:
+             *      window.protractor || (window.protractor = {}); window.protractor['eventkey'] = {data: 'something happened'};
+             *
+             * and then in test you can wait until this event will be triggered like:
+             *      browser.wait(protractor.ExpectedConditions.event('eventkey') [, timeout]);
+             */
+            protractor.ExpectedConditions.event = function (name) {
+                return protractor.ExpectedConditions.jsCheck(createFunction(name));
+            }
+
+            /**
+             * In test you can wait for js data like:
+             *      browser.waitJs('eventkey' [, 10000]).then(function (data) { ... });
+             */
+            browser.waitJs = function (fn, timeout) {
+                browser.wait(protractor.ExpectedConditions.jsCheck(fn), timeout);
+                return browser.executeScript(fn);
+            };
+
+            /**
+             * in browser when you call:
+             *      window.protractor || (window.protractor = {}); window.protractor['eventkey'] = {data: 'something happened'};
+             *
+             * and then in test you can listen for event like:
+             *      browser.waitEvent('eventkey' [, 10000]).then(function (data) { ... });
+             */
+            browser.waitEvent = function (name, timeout) {
+                return browser.waitJs(createFunction(name), timeout);
+            };
+        }())
+
     }
 };
