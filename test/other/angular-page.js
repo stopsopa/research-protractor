@@ -1,6 +1,6 @@
 describe('angularjs homepage todo list', function() {
     it('should add a todo', function() {
-        browser.get('https://angularjs.org');
+        browser.get('https://angularjs.org' /* , timeout:int */);
 
         element(by.model('todoList.todoText')).sendKeys('write first protractor test');
         element(by.css('[value="add"]')).click();
@@ -11,6 +11,7 @@ describe('angularjs homepage todo list', function() {
 
         // You wrote your first test, cross it off the list
         todoList.get(2).element(by.css('input')).click();
+
         var completedAmount = element.all(by.css('.done-true'));
         expect(completedAmount.count()).toEqual(2);
     });

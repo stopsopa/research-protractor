@@ -1,5 +1,6 @@
 /**
  * http://www.protractortest.org/#/tutorial#step-4-lists-of-elements
+ * http://www.protractortest.org/#/locators#finding-multiple-elements
  */
 describe('Protractor Demo App', function() {
 
