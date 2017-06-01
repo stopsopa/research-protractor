@@ -10,7 +10,7 @@ before_script:
 #services:
 #  - mysql
 env:
-  - TRAVIS=true
+  - TRAVIS_NODE_VERSION="v6.9.1"
 
 sudo: true # with ports higher then 1024 no need to use sudo
 
