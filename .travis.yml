@@ -28,7 +28,7 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "echo 'cd protractor && yarn'"
   - php -S localhost:1025 & disown
   - sleep 5
-  - curl localhost/fixtures/event.php -I
+  - curl localhost:1025/fixtures/event.php -I
   - "cd protractor"
 #  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 #  - sudo apt-get install -y nodejs
