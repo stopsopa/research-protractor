@@ -5,7 +5,8 @@ echo <<<EOF
 {
     "parameters": {
         "protocol": "http",
-        "host": "localhost"
+        "host": "localhost",
+        "port": 1025
     }
 }
 EOF;

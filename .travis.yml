@@ -26,7 +26,7 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "echo 'cd protractor && yarn'"
-  - php -S localhost:80 & disown
+  - php -S localhost:1025 & disown
   - sleep 5
   - curl localhost/fixtures/event.php -I
   - "cd protractor"
