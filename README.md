@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/stopsopa/research-protractor.svg?branch=master)](https://travis-ci.org/stopsopa/research-protractor)
+
 Most important:
 
 - table of content: http://www.protractortest.org/#/toc
