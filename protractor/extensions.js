@@ -10,7 +10,7 @@ config = JSON.parse(config);
 
 module.exports = function () {
     return {
-        baseUrl: config.parameters.protocol + '://' + config.parameters.host,
+        baseUrl: config.parameters.protocol + '://' + config.parameters.host + ((config.parameters.port == 80) ? '' : ':' + config.parameters.port),
         onPrepare: function() {
 
             global.config = config;

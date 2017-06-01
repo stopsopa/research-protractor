@@ -68,7 +68,7 @@ else
         echo "vvvvvvvvvvv starting php server vvvvvvvvvvv";
         echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
         cd ..
-        php -S localhost:80 & disown
+        php -S localhost:1025 & disown
         cd protractor
         sleep 1
 
