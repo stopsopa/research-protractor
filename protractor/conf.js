@@ -20,14 +20,14 @@ var config = Object.assign(extensions(), {
     // http://www.protractortest.org/#/control-flow#disabling-the-control-flow
     SELENIUM_PROMISE_MANAGER: true,
 
-    multiCapabilities: [
-        { // http://www.protractortest.org/#/tutorial#step-3-changing-the-configuration
-            browserName: 'firefox'
-        },
-        // {
-        //     browserName: 'chrome'
-        // }
-    ]
+    // multiCapabilities: [
+    //     { // http://www.protractortest.org/#/tutorial#step-3-changing-the-configuration
+    //         browserName: 'firefox'
+    //     },
+    //     // {
+    //     //     browserName: 'chrome'
+    //     // }
+    // ]
 });
 
 if (process.env.TRAVIS) {
