@@ -27,7 +27,6 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "cd protractor"
   - yarn
   - pwd
-  - sudo apt-get install php
   - sudo apt-get install php5
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
