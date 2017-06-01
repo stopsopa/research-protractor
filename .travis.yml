@@ -17,9 +17,10 @@ before_script:
 #services:
 #  - mysql
 env:
+  matrix:
   - TRAVIS_NODE_VERSION="6"
   global:
-    secure: "YjiWnxbwyHgo0j6FNm+derD7tz02DeVqdNdcNdYAuBAXjDDpi07F/e8+GEOMTGqS0HXJ8v9VctYOyxmlqaffLX95Ifu8rY2dhNHv1Aeuq5WJuOkTuW4VzCjpphuLs0QgNVIXz/3vAH0UafnWYHjlRCS7cKQaKvpWAba2GzazEm/pkyh/lywtC2vfeEf6E2EH07yp43uLPrFsoP10Akf7O3pz4XujcXzmcVCFiTDYPqohujnXuSMTTHkQsSnFVf8wTrtyPeRvYB4oweaoZ6A7/G0lhbKrN8FheVxZc8ZW+S7FwGVCawcM62bwPgZkKcjkroaechADfz1+RHcjrJ0Z8lstRlzqpdxwdfJc8DNqPbKIBKbYYC5R6iEkNaX2Nzcy27OMKw2K084FQaYPrknVr8pXfysstsengyvXNNwcv9csP45xvL1xrw+mCCLLE/5EQCGHcG2u7B6zy4IctGgbGf/6ZMRWqOS7OdJvLKf1RcLynkYyDWirGEeaPuF2u/W7nwr3w8m1wtlhDbxa72veXF/4gLzBgSRd/HzLfsIOj+DV0lfDXW1fWGeEwxkNIuTsEpGJ39eqdcUpRJDMmtY6uwmlRDR9Gzu/0FmCB2LektLpOxfpnnJBQx4w8DziMSbtJ5MI0mDdMecJQ6yl7tnQKTFO6OyR+FT2+V9IkT8EPGk="
+    secure: btG11rCGxh+SsBnYmzWO2mXWYm+Gpz8UMocXychvPKXdwrLCTK4RWlh25/5NpoIUOqWYmUuF/tCLJCXv7TCUOfJKthRVqCACn5qr/1TFmOab/wX3mUS2hp2vh0Y8qKpF4l/Zy8eU1YWPKRSX1SGck27lzSOJjw80GohSyi/dOMG1ZSVItGBhIWbmr2XzUKIJuq/mp0ofvWKedc8bOKUlaZo6O9qBGuG572Sysfv9xNLAljUbeO1VyTwiEi0TVtkQLBTB0jXuD6Ats4Ja8HBaRvHq5IcUDpBHILEfgRrx8Ni3sqTM0jQ+StPbHVCXI6IjTzC7r1ysbZsgzDx+3vgbtinIxapZ9QDoirNCyBc9vYj8OhXObTNCOYWbnzmUe0p3SH7olxvud3Jxjbz+oc9V+wzKe9NNxeqLPJhpK9UkW/u+Cvoj5fEhZyR2rw9ffd1mTCS6ztDTRPxaKuStuY8OOwIdvwkfVJ4Y+aVaDzNVNuV693aXEGCiJmGrXwp1CSJ+6Fvn1xmlXB1LGpFvZ6k+YbRRZRffUqNZzVj8mgm46DGPylBA3YYB+JXjtA+c6qQUExfVnZgr06nq96gaxvsBGDj6xGNU/ejnOGxQMh7/6h0/+cKfOvbZj16vyK/8aAiD4srN1g85CgbDQcXmh7Bt1qQGJJhQNtTk6Tgg3dknE2o=
 
 install:
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
