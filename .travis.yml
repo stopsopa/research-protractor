@@ -1,4 +1,5 @@
-language: node_js
+dist: trusty
+language: php
 node_js:
 #  - 0.8
   - "7"
@@ -27,14 +28,9 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "cd protractor"
   - yarn
   - pwd
-  - sudo apt-get install python-software-properties software-properties-common
-  - sudo add-apt-repository -y ppa:ondrej/php
-  - sudo apt-get update
-  - sudo apt-cache search php7
-  - sudo apt-get install php7.1-cli -y
-  - php -v
-  - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  - sudo rm -rf ~/.nvm - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   - sudo apt-get install -y nodejs
+  - php -v
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- sleep 3 # give xvfb some time to start
