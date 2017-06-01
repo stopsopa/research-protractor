@@ -28,6 +28,9 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - yarn
   - pwd
   - sudo apt-get install php5-cli
+  - php -v
+  - sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- sleep 3 # give xvfb some time to start
