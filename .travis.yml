@@ -54,6 +54,8 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
 #  - /bin/bash dev.sh start
 
 script:
+  - php -v
+  - node -v
   - sudo node node_modules/protractor/bin/protractor conf.js
 
 #after_success:
