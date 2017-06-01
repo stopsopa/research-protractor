@@ -27,7 +27,6 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "sh -e /etc/init.d/xvfb start"
   - "echo 'cd protractor && yarn'"
   - "cd protractor"
-  - pwd
 #  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 #  - sudo apt-get install -y nodejs
   - php -v
@@ -40,7 +39,7 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - php -v
   - node -v
   - node node_modules/protractor/bin/webdriver-manager update
-  - node node_modules/protractor/bin/webdriver-manager start
+  - node node_modules/protractor/bin/webdriver-manager start & disown
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- sleep 3 # give xvfb some time to start
