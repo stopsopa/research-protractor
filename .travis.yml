@@ -14,7 +14,7 @@ before_script:
 env:
   - TRAVIS=true
 
- sudo: true # with ports higher then 1024 no need to use sudo
+sudo: true # with ports higher then 1024 no need to use sudo
 
 #install:
 #  - npm install -g yarn # no need to install yarn https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#Travis-CI-supports-yarn
