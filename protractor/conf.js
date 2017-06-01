@@ -6,7 +6,8 @@ var extensions = require('./extensions.js');
  * conf spec: https://github.com/angular/protractor/blob/5.1.2/lib/config.ts#L644
  */
 exports.config = Object.assign(extensions(), {
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    seleniumAddress: 'http://ondemand.saucelabs.com:80/wd/hub',
+    // seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: [
         '../test/**/*.spec.js'
     ],
