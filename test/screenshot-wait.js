@@ -29,6 +29,7 @@ describe('screenshot', function () {
         // https://stackoverflow.com/questions/22072327/how-can-i-wait-for-a-condition
         // https://github.com/angular/protractor/blob/master/lib/expectedConditions.ts
         browser.wait(protractor.ExpectedConditions.presenceOf(element(by.id('done'))), 10000);
+
         browser.wait(protractor.ExpectedConditions.textToBePresentInElement($('pre'), 'finally: '), 10000);
 
         screenshot('exception_late.png');
