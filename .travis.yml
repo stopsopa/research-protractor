@@ -40,8 +40,8 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
 #  - /bin/bash dev.sh start
 
 script:
-  - pwd
-  - /bin/bash start.sh start
+  - id
+  - sudo /bin/bash start.sh start
 
 #after_success:
 #  - cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js || cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js || cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js
