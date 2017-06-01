@@ -10,7 +10,11 @@ before_script:
 #services:
 #  - mysql
 env:
-  - TRAVIS_NODE_VERSION="v6.9.1"
+  - TRAVIS_NODE_VERSION="6"
+
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - npm install
 
 sudo: true # with ports higher then 1024 no need to use sudo
 
@@ -24,14 +28,14 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "echo 'cd protractor && yarn'"
   - "cd protractor"
   - pwd
-  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-  - sudo apt-get install -y nodejs
+#  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#  - sudo apt-get install -y nodejs
   - php -v
   - node -v
-  - sudo npm cache clean -f
-  - sudo npm install -g n
-  - sudo n 6.5.0
-  - node -v
+#  - sudo npm cache clean -f
+#  - sudo npm install -g n
+#  - sudo n 6.5.0
+#  - node -v
   - yarn
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
