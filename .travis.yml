@@ -19,7 +19,8 @@ before_script:
 env:
   matrix:
     - TRAVIS_NODE_VERSION="6"
-  secure: btG11rCGxh+SsBnYmzWO2mXWYm+Gpz8UMocXychvPKXdwrLCTK4RWlh25/5NpoIUOqWYmUuF/tCLJCXv7TCUOfJKthRVqCACn5qr/1TFmOab/wX3mUS2hp2vh0Y8qKpF4l/Zy8eU1YWPKRSX1SGck27lzSOJjw80GohSyi/dOMG1ZSVItGBhIWbmr2XzUKIJuq/mp0ofvWKedc8bOKUlaZo6O9qBGuG572Sysfv9xNLAljUbeO1VyTwiEi0TVtkQLBTB0jXuD6Ats4Ja8HBaRvHq5IcUDpBHILEfgRrx8Ni3sqTM0jQ+StPbHVCXI6IjTzC7r1ysbZsgzDx+3vgbtinIxapZ9QDoirNCyBc9vYj8OhXObTNCOYWbnzmUe0p3SH7olxvud3Jxjbz+oc9V+wzKe9NNxeqLPJhpK9UkW/u+Cvoj5fEhZyR2rw9ffd1mTCS6ztDTRPxaKuStuY8OOwIdvwkfVJ4Y+aVaDzNVNuV693aXEGCiJmGrXwp1CSJ+6Fvn1xmlXB1LGpFvZ6k+YbRRZRffUqNZzVj8mgm46DGPylBA3YYB+JXjtA+c6qQUExfVnZgr06nq96gaxvsBGDj6xGNU/ejnOGxQMh7/6h0/+cKfOvbZj16vyK/8aAiD4srN1g85CgbDQcXmh7Bt1qQGJJhQNtTk6Tgg3dknE2o=
+  global:
+    secure: "cL+IfhkurhwiJPrWMUqRZb+x4mYh9EHCb1l1bXHbXuCw/TWLqKMi6/O5WfVYb6UaIhgnqK+4BnHWs2kZr+sLucIKZalUWZEU996AaBecu+Q6F13RUungalT2iKyyIF2r+my9APDa83LBGVObSyhMX5x/p+mPNkyeo3rUDNvtqp7/JDyzAE0ZitFEpQdAYrOkDmWjc23uckFy+axEmAd3liLbZvQD9A+NNjeTCW7EPiCskRaBTr+c5M+EP8S7pLGivCJfx9tn4g4MoFoPNeUuWDyh8avdaMXJTbdDQ7iU1KiqTBq0kasON8bjm8rkBcmO7pw0lVI34nFNb1UAK9tbnc/BN7HYFXsZ1K/5RG1FBzeH8RZMpm5BBtXT63288aX/2NU78wRLi5yNucK77S7pSLFYRC5y8Z+WCwMKbbkH4x1kB7MxwP7KaKfn59WDC79AYR1bO1dlNwkCO4HdQBPwx/TX0rPbu+SLR84etGI5J1gJj4epmwHcaOhCNsnriX84MQ1qaXnn89SBbgq9Lgxmtsetfi8Gm6JRLVAckWatHEyY6wWkI/ZQSW351Chj241o0VCRsLuUgB3NmdUJOUVKkmZlnVPtozAotlzRxs0ScSi+2lZni6OfNzXlIvKbpm8qqrlUFzhX8bPN+1Oel2RdIiglLAdD1tpgtzTfluFrA8E="
 
 install:
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
