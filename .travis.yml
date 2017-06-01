@@ -40,10 +40,6 @@ sudo: true # with ports higher then 1024 no need to use sudo
 before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-  - rackup  # start a Web server
-  - sleep 3 # give Web server some time to bind to sockets, etc
-  - "echo 'cd protractor && yarn'"
   - echo $SENV;
   - php -S localhost:1025 & disown
   - sleep 5
