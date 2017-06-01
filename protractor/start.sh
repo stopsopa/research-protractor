@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # run as sudo one of commands
-# /bin/bash prot.sh         - only kills selenium and php server
-# /bin/bash prot.sh start   - kills selenium and php servers, runs them again, and execute tests
-# /bin/bash prot.sh test    - run selenium and php server if its not running and execute tests - most convenient to run tests again and again
+# /bin/bash start.sh         - only kills selenium and php server
+# /bin/bash start.sh start   - kills selenium and php servers, runs them again, and execute tests
+# /bin/bash start.sh test    - run selenium and php server if its not running and execute tests - most convenient to run tests again and again
 
-# /bin/bash prot.sh test --specs test/calc-multiple.js      - execute only one script (you can pass this way more arguments for native protractor command)
-# /bin/bash prot.sh --specs test/dir/\*.js                  - run in 'start' mode (means kill service and start again, then run tests)
-# /bin/bash prot.sh test --specs test/dir/\*.js             - run in 'test' mode (run just test if services are running)
+# /bin/bash start.sh test --specs test/calc-multiple.js      - execute only one script (you can pass this way more arguments for native protractor command)
+# /bin/bash start.sh --specs test/dir/\*.js                  - run in 'start' mode (means kill service and start again, then run tests)
+# /bin/bash start.sh test --specs test/dir/\*.js             - run in 'test' mode (run just test if services are running)
 
 # WARNING: with --specs parameter use rather \* wildcard then just * because * is resolved in bash shell but \* is resolved by protractor itself
 
@@ -68,7 +68,9 @@ else
         echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
         echo "vvvvvvvvvvv starting php server vvvvvvvvvvv";
         echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+        cd ..
         php -S localhost:80 & disown
+        cd protractor
         sleep 1
 
         if [ ! -e node_modules/webdriver-manager/selenium ]; then
