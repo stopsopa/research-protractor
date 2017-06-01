@@ -63,7 +63,6 @@ else
     ISRUNNING=$(ps aux | grep 'selenium-server-standalone' | grep -v grep);
 
     if [ "$ISRUNNING" = "" ]; then
-
         echo "";
         echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
         echo "vvvvvvvvvvv starting php server vvvvvvvvvvv";
