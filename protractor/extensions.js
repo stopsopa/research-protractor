@@ -27,12 +27,12 @@ module.exports = function () {
             /**
              * use example
              * function test() {
-         *    // return something "truthy"
-         *    return (window.protractor && window.protractor['eventname']) ? window.protractor['eventname'] : null;
-         * }
-             * browser.wait(protractor.ExpectedConditions.jsCheck(test), 10000);
+             *    // return something "truthy"
+             *    return (window.protractor && window.protractor['eventname']) ? window.protractor['eventname'] : null;
+             * }
+             * browser.wait(protractor.ExpectedConditions.js(test), 10000);
              */
-            protractor.ExpectedConditions.jsCheck = function (script) {
+            protractor.ExpectedConditions.js = function (script) {
                 return this.and(() => {
                     return browser.executeScript(script).then((data) => {
                         return !!data;
@@ -45,7 +45,7 @@ module.exports = function () {
              *      browser.waitJs('eventkey' [, 10000]).then(function (data) { ... });
              */
             browser.waitJs = function (fn, timeout) {
-                browser.wait(protractor.ExpectedConditions.jsCheck(fn), timeout);
+                browser.wait(protractor.ExpectedConditions.js(fn), timeout);
                 return browser.executeScript(fn);
             };
 
@@ -55,19 +55,18 @@ module.exports = function () {
 
                     del = (typeof del === 'undefined') ? false : true;
 
+                    del = del ? 'delete window.protractor[name];' : '';
+
                     var fn = `
 if (window.protractor && window.protractor[name]) {
     var ret = window.protractor[name];
-    delete window.protractor[name];
+    ${del}
     return ret;
 }
 return false;
 `;
-                    if (!del) {
-                        fn = fn.replace('delete window.protractor[name];', '');
-                    }
-
                     fn = fn.replace(/[\r\n]/g, '').replace(/[\r\n\s]{2,}/g, ' ').replace(/\[name\]/g, "['" + name + "']");
+
                     return Function(fn);
                 }
                 /**
@@ -78,7 +77,7 @@ return false;
                  *      browser.wait(protractor.ExpectedConditions.event('eventkey') [, timeout]);
                  */
                 protractor.ExpectedConditions.event = function (name) {
-                    return protractor.ExpectedConditions.jsCheck(createFunction(name));
+                    return protractor.ExpectedConditions.js(createFunction(name));
                 }
 
                 /**
@@ -89,10 +88,22 @@ return false;
                  *      browser.waitEvent('eventkey' [, 10000]).then(function (data) { ... });
                  */
                 browser.waitEvent = function (name, timeout) {
-                    browser.wait(protractor.ExpectedConditions.jsCheck(createFunction(name)), timeout);
+                    browser.wait(protractor.ExpectedConditions.js(createFunction(name)), timeout);
                     return browser.executeScript(createFunction(name, true));
                 };
-            }())
+            }());
+
+            browser.angular = function (mode) {
+
+                if (typeof mode === 'undefined') {
+                    throw "browser.angular(mode) - mode not specified";
+                }
+
+                mode = !!mode;
+
+                browser.ignoreSynchronization = !mode;
+                browser.waitForAngularEnabled(mode);
+            };
 
         }
     }

@@ -1,6 +1,6 @@
 'use strict';
 
-var extensions = require('./extensions.js')
+var extensions = require('./extensions.js');
 
 /**
  * conf spec: https://github.com/angular/protractor/blob/5.1.2/lib/config.ts#L644
@@ -8,7 +8,7 @@ var extensions = require('./extensions.js')
 exports.config = Object.assign(extensions(), {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: [
-        '../test/*.js'
+        '../test/**/*.spec.js'
     ],
 
     // Options to be passed to Jasmine-node.

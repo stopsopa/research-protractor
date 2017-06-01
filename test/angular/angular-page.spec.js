@@ -1,5 +1,8 @@
 describe('angularjs homepage todo list', function() {
     it('should add a todo', function() {
+
+        browser.angular(true);
+
         browser.get('https://angularjs.org' /* , timeout:int */);
 
         element(by.model('todoList.todoText')).sendKeys('write first protractor test');

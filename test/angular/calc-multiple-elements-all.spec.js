@@ -22,6 +22,8 @@ describe('Protractor Demo App', function() {
 
     it('should have a history', function() {
 
+        browser.angular(true);
+
         add(1, 2);
 
         add(3, 4);
@@ -30,7 +32,7 @@ describe('Protractor Demo App', function() {
 
         add(5, 6);
 
-        expect(history.count()).toEqual(3); // This is wrong!
+        expect(history.count()).toEqual(3);
 
         add(15, 60);
 
@@ -41,7 +43,6 @@ describe('Protractor Demo App', function() {
         add(1, 1)
         add(1, 1)
         add(15, 61);
-
 
         expect(history.first().getText()).toContain('15 + 61');
     });

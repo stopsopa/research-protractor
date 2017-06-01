@@ -9,11 +9,10 @@ describe('Protractor Demo App', function() {
 
     it('', function() {
 
-        browser.ignoreSynchronization = true;
-        browser.waitForAngularEnabled(false);
+        browser.angular(false);
 
         // parentheses are important if you want to create object in "oneliner"
-        var pageObject = new (require(path.resolve(__dirname, '..', 'pageObjects', 'PageObject.js')));
+        var pageObject = new (require(path.resolve(__dirname, 'pageObjects', 'PageObject.js')));
 
         pageObject.navigate();
 

@@ -4,14 +4,11 @@
  */
 describe('Protractor Demo App', function() {
 
-    it('should have a title', function(done) {
+    it('should have a title', function() {
 
-        // browser.ignoreSynchronization = true;
-        browser.waitForAngularEnabled(false);
+        browser.angular(false);
 
         browser.get('/fixtures/actions.html' /* , timeout:int */);
-
-        var ename        = element(by.css('[name="naddme"]'));
 
         var el = element(by.tagName('input'));
 
@@ -22,18 +19,13 @@ describe('Protractor Demo App', function() {
         // to control that execute command:
         // node node_modules/protractor/bin/protractor debug conf.js "--specs" "test/actions.js"
         // manually
-        browser.pause();
+        // browser.pause();
 
         el.clear();
 
         el.sendKeys('and final val');
 
-        expect(el.getAttribute('value').then(function (text) {
-            console.log('****'.repeat(10), text)
-            return text
-        })).toBe('and final val');
-
-        setTimeout(done, 5000);
+        expect(el.getAttribute('value')).toBe('and final val');
     });
 
 });
