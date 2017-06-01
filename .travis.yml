@@ -10,12 +10,6 @@ addons:
     access_key:
       secure: "GjKWWVrwD/Ah1wyzBE0uGea2iTO4fWNQVe6g7hi0ARZp31t+6iCmePV3x/rHK/bDeQvBeP1MGXkCCb17nYqVl/TGHJKMc7e8LEb0DzXsl7BEqmlK/bg21N2n+BoGI1h5kFwR0sP4MGTMGMYyyIeLwgmGw67x0XcxY3BFaQzORAuAqzJlbvmFr9ZsTCAeNqQ0s1fE/kCSwbZYemM4ny42QWNHpC/LYg900iWetqztgk3rKWxVfURVgntCbbQNcSAvxUjp8Uv/XTchGEWSY3m62OGguPafVG4TbVTX39qkIuXuqiqvLg4xujuFqVLnlYeGmvIm1DkNjjpQ5JMwrviIn3Uv3h3h/ZmB9q5DfgdkA36imixjISfeYwng0lfC/XTEPtUgFVRuEj7zUnvRy5AOjHYaLsUCEl0Gj0OP8MvGKHCASMWou1YRvamFgNpZvabVQ/arigG5jr2ohjb8wQ0m5ZCQhDCIK8z+DAJtYFh4MuZTn9VKdw2JyMnia0PtcxBQpXUjjdiyVDCZtE4/0D9tKFL27ndEeilQFUGn5Umg97R6X2WHypB3ZDrtrXucPeybrwwc5e94ftL64f97mTe5ZVDtCVM5zqK3b3DDadt2d53LUh91XBALTi09syXTQmXQIxDufSgp/MK0L+J01W5nZ7mSEr2gh45yf4RcHI6aBfA="
 
-# https://docs.travis-ci.com/user/firefox/
-# because of error https://stackoverflow.com/a/40232825
-#addons:
-#  firefox: "50.0b6"
-
-
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -40,7 +34,7 @@ sudo: true # with ports higher then 1024 no need to use sudo
 before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - echo $SENV;
+  - "echo $SENV;"
   - php -S localhost:1025 & disown
   - sleep 5
   - curl localhost:1025/fixtures/event.php -I
@@ -48,24 +42,6 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - php -v
   - node -v
   - yarn
-  # alternatively
-  #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-  #- sleep 3 # give xvfb some time to start
-#  - npm run server & disown #https://docs.travis-ci.com/user/gui-and-headless-browsers/#Starting-a-Web-Server
-#  - npm run parser & disown
-#  - sleep 3 - not necessary, install global libs below instead, it takes time too
-#  - yarn global add mocha@3.2.0
-#  - yarn global add istanbul@0.4.5
-#  - mysql -u root -e "CREATE DATABASE spark /*\!40100 COLLATE 'utf8_general_ci' */;"
-#  - mysql -u root spark < lib/db/mysql/spark_cache.sql
-#  - /bin/bash dev.sh start
 
 script:
-  - php -v
-  - node -v
-  - pwd
   - node node_modules/protractor/bin/protractor conf.js
-
-#after_success:
-#  - cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js || cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js || cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js
-
