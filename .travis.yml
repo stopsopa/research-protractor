@@ -26,6 +26,7 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "echo 'cd protractor && yarn'"
+  - php -S localhost:80 & disown
   - "cd protractor"
 #  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 #  - sudo apt-get install -y nodejs
