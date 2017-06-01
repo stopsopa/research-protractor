@@ -7,3 +7,11 @@ Most important:
 other:
 
 - suites: http://www.protractortest.org/#/page-objects#configuring-test-suites
+
+ExpectedConditions:
+
+- https://github.com/angular/protractor/blob/master/lib/expectedConditions.ts
+    
+testing not angular
+    
+- https://github.com/sakshisingla/Protractor-Non-Angular-Tests/wiki/Creating-test-scripts-using-Protractor-for-non-angular-application

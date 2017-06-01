@@ -5,8 +5,7 @@ describe('Protractor Demo App', function() {
 
     it('should have a history', function() {
 
-        browser.ignoreSynchronization = true;
-        browser.waitForAngularEnabled(false);
+        browser.angular(false);
 
         browser.get('/fixtures/cssContainingText.html' /* , timeout:int */);
 

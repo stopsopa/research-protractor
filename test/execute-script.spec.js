@@ -9,24 +9,15 @@ function test() {
  */
 describe('Protractor Demo App', function() {
 
-    it('should add one and two', function(done) {
+    it('should add one and two', function() {
 
-        browser.ignoreSynchronization = true;
-
-        browser.waitForAngularEnabled(false);
+        browser.angular(false);
 
         browser.get('/fixtures/html.php' /* , timeout:int */);
 
         browser.executeScript(test).then(function (data) {
 
-            console.log('data '.repeat(10), JSON.stringify(data));
-
-            // console.log('key: ', protractor.Key);
-
-            // http://www.protractortest.org/#/api-overview#global-variables
             expect(data).toEqual('lorem ipsum...');
-
-            setTimeout(done, 1000);
         });
     });
 });

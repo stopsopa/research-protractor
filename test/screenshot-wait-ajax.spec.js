@@ -11,12 +11,10 @@ function screenshot(file) {
     });
 }
 
-describe('screenshot', function () {
+describe('testing news page', function () {
     it('screenshot test', function () {
 
-        browser.ignoreSynchronization = true;
-
-        browser.waitForAngularEnabled(false);
+        browser.angular(false);
 
         browser.get('/fixtures/html.php' /* , timeout:int */);
 
@@ -26,8 +24,6 @@ describe('screenshot', function () {
 
         screenshot('exception_early.png');
 
-        // https://stackoverflow.com/questions/22072327/how-can-i-wait-for-a-condition
-        // https://github.com/angular/protractor/blob/master/lib/expectedConditions.ts
         browser.wait(protractor.ExpectedConditions.presenceOf(element(by.id('done'))), 10000);
 
         browser.wait(protractor.ExpectedConditions.textToBePresentInElement($('pre'), 'finally: '), 10000);
