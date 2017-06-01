@@ -17,3 +17,8 @@ ExpectedConditions:
 testing not angular
     
 - https://github.com/sakshisingla/Protractor-Non-Angular-Tests/wiki/Creating-test-scripts-using-Protractor-for-non-angular-application
+
+configuring sauce labs:
+
+- http://dev.topheman.com/setup-travis-ci-saucelabs-for-protractor/
+- https://www.youtube.com/watch?v=afy_EEq_4Go
