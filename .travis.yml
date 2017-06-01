@@ -39,8 +39,8 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - yarn
   - php -v
   - node -v
-  - sudo node node_modules/protractor/bin/webdriver-manager update
-  - sudo node node_modules/protractor/bin/webdriver-manager start
+  - node node_modules/protractor/bin/webdriver-manager update
+  - node node_modules/protractor/bin/webdriver-manager start
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- sleep 3 # give xvfb some time to start
@@ -56,7 +56,8 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
 script:
   - php -v
   - node -v
-  - sudo node node_modules/protractor/bin/protractor conf.js
+  - pwd
+  - node node_modules/protractor/bin/protractor conf.js
 
 #after_success:
 #  - cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js || cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js || cat ./coverage/lcov.info | node node_modules/coveralls/bin/coveralls.js
