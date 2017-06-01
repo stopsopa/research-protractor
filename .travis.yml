@@ -45,21 +45,9 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - sleep 5
   - curl localhost:1025/fixtures/event.php -I
   - "cd protractor"
-#  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#  - sudo apt-get install -y nodejs
   - php -v
   - node -v
-#  - sudo npm cache clean -f
-#  - sudo npm install -g n
-#  - sudo n 6.5.0
-#  - node -v
   - yarn
-  - php -v
-  - node -v
-  - node node_modules/protractor/bin/webdriver-manager update
-  - node node_modules/protractor/bin/webdriver-manager start & disown
-  - sleep 5
-  - curl localhost:4444 -I
   # alternatively
   #- "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   #- sleep 3 # give xvfb some time to start
