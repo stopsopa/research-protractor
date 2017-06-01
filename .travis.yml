@@ -37,6 +37,8 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
 #  - sudo n 6.5.0
 #  - node -v
   - yarn
+  - php -v
+  - node -v
   - sudo node node_modules/protractor/bin/webdriver-manager update
   - sudo node node_modules/protractor/bin/webdriver-manager start
   # alternatively
