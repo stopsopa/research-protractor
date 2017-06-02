@@ -22,4 +22,4 @@ configuring sauce labs:
 
 - http://dev.topheman.com/setup-travis-ci-saucelabs-for-protractor/
 - https://www.youtube.com/watch?v=afy_EEq_4Go
-- https://stackoverflow.com/q/29015603
+- https://stackoverflow.com/q/29015603  and answer below

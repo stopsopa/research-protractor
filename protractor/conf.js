@@ -7,10 +7,14 @@ var extensions = require('./extensions.js');
  */
 var config = Object.assign(extensions(), {
     // seleniumAddress: 'http://ondemand.saucelabs.com:80/wd/hub',
+
+    // don't do that because user and key will be visible in travis
     // seleniumAddress: "http://" + process.env.SAUCE_USERNAME + ":" + process.env.SAUCE_ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub",
+
     // seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: [
-        '../test/**/*.spec.js'
+        // '../test/**/*.spec.js'
+        '../test/*.spec.js' // for sauce labs test only local
     ],
 
     // Options to be passed to Jasmine-node.
