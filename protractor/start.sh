@@ -73,6 +73,10 @@ else
         sleep 1
 
         if [ ! -e node_modules/webdriver-manager/selenium ]; then
+            echo "";
+            echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
+            echo "vvvvvvvvvvvvv webdriver update vvvvvvvvvvvv";
+            echo "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
             node node_modules/protractor/bin/webdriver-manager update
         fi
 
