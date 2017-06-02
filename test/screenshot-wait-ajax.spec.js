@@ -22,12 +22,12 @@ describe('testing news page', function () {
 
         var pre = $('pre');
 
-        screenshot('exception_early.png');
+        screenshot('../tmp/exception_early.png');
 
         browser.wait(protractor.ExpectedConditions.presenceOf(element(by.id('done'))), 10000);
 
         browser.wait(protractor.ExpectedConditions.textToBePresentInElement($('pre'), 'finally: '), 10000);
 
-        screenshot('exception_late.png');
+        screenshot('../tmp/exception_late.png');
     });
 });
