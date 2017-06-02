@@ -23,3 +23,10 @@ configuring sauce labs:
 - http://dev.topheman.com/setup-travis-ci-saucelabs-for-protractor/
 - https://www.youtube.com/watch?v=afy_EEq_4Go
 - https://stackoverflow.com/q/29015603  and answer below
+
+Addons:
+
+Which witch is which? 
+
+- http://yizeng.me/2014/04/25/relationships-between-different-versions-of-selenium/
+- http://www.aosabook.org/en/selenium.html

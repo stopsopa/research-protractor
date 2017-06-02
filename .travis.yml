@@ -8,7 +8,7 @@ addons:
     username:
       secure: "XOkgPTA2f6KxInMO9XgMqxyOdhgeOqJXSVbykn6xhcDATUeV1PdfeJYL3u/bfRUOPU5y7y4gqCrSRi8JYcW7vqozLTSHdhJsjbaibZGy50zGpUyyuGFs068XMVryOkkKqL0e2sju5RbHrnb32fVbftt82XfqkBoUuxyZRTnbSJ7w/PSoYmcG2b1fV7Xc5d/pkyTChIdn9NEOrcpbHZZRRxcTJk+506VTc5cD4jDrcRplby8oC+Aybm0HoOvhsgbGitfak9xbvpz+pIeazOpqmNxE96eBIqWvR91K5y36FTLH24xYF0vi/9NaSbiJ341OYEFyXbL6iUyTY3J0GVKOor7PfRxqK52EYoi6k0LsXwTDZ9JyBktx9dqk3ALJosd/dQdGh4v1Adq9apSPs92qLvBfLKdSOdfebYczpWlTAfPLg3EXFfwTIJ2RLBXGeWyRqk0EYV2zK/7F4XoKP4lka7+KOGEs/LtbmgYf/WqFkpUnbtvI1vzK9hhtszjydeTHb8zggvScuQhCP4zdXhm/W3yIFmHzJmfv/VtQgBdnjEjRscZ3F4PiAsBRcCt+5uwRKbwSR+I3JE4AHveTDzV5+jxGlKIP+TsLOahWpUAo12OjcqG1spHP3toSflrBrdE1vyTRWuwYVZ61Os5v4E0amreocAjcOqpRLWJ/1OFaahI="
     access_key:
-      secure: "GjKWWVrwD/Ah1wyzBE0uGea2iTO4fWNQVe6g7hi0ARZp31t+6iCmePV3x/rHK/bDeQvBeP1MGXkCCb17nYqVl/TGHJKMc7e8LEb0DzXsl7BEqmlK/bg21N2n+BoGI1h5kFwR0sP4MGTMGMYyyIeLwgmGw67x0XcxY3BFaQzORAuAqzJlbvmFr9ZsTCAeNqQ0s1fE/kCSwbZYemM4ny42QWNHpC/LYg900iWetqztgk3rKWxVfURVgntCbbQNcSAvxUjp8Uv/XTchGEWSY3m62OGguPafVG4TbVTX39qkIuXuqiqvLg4xujuFqVLnlYeGmvIm1DkNjjpQ5JMwrviIn3Uv3h3h/ZmB9q5DfgdkA36imixjISfeYwng0lfC/XTEPtUgFVRuEj7zUnvRy5AOjHYaLsUCEl0Gj0OP8MvGKHCASMWou1YRvamFgNpZvabVQ/arigG5jr2ohjb8wQ0m5ZCQhDCIK8z+DAJtYFh4MuZTn9VKdw2JyMnia0PtcxBQpXUjjdiyVDCZtE4/0D9tKFL27ndEeilQFUGn5Umg97R6X2WHypB3ZDrtrXucPeybrwwc5e94ftL64f97mTe5ZVDtCVM5zqK3b3DDadt2d53LUh91XBALTi09syXTQmXQIxDufSgp/MK0L+J01W5nZ7mSEr2gh45yf4RcHI6aBfA="
+      secure: "aLnteksdhd7384aHoiRgLZxXTUAw2CIYXvrJf6OcHq3+9C8YP4TOGpr6sf60cHalr0oQOV6QXUpvrRNqsZve45MtCvz8pwZTlKhgpLWUbRCFkvXdNlAi4wXqh8ZKTbeGao7YGhfxjvuABRsz4AglrL0VCD+3jbt0IamgUi0neksrgoQUHCKILBpctE6zKU3vDrVzaJ1QMW2BQJ5KaDG2xbSQN1YwcNsjcX2OZorIhnf31qppV4Wk0FjP4hrIKZcUHOjJm3hUgL82OpUyDXKm/6upBuUoDn8Vzq9d3cNLXjtPpgDRremfDGoQSDzDlyumIrivxwD2OQrmwMsRw1tHTX7acf4qub5FhKIMLsLvhix3RS8gdpdqApqufO4aP5dBDHh3AC3BsOl9r7PFIKbrkByhkehahkP9f1eZ/2XwdngnIxEuxJgNcQHEnW+nSN7TAaLtEsczCC2RZe61O3ogM6QhOT+tJuWkJMOBAMXOOIXlrl/1V1h1gg+uiSSHFFApZ4inGxKAnSta3MorothgnQPCXPZN/hovvCIb1IWFhQDv+oG1Q2/u8E1VzP3qTvr6UkELyfQy7VocGgXvj7nHO4Vtaj9IvqVBpUom+J3oug/RMVDUz5xtzU4ryHAGj3stJ/NQjL93jk4cRc+FLzsQqDyC9WfKUcs8wH1mcFuDjs4="
 
 before_script:
   - export DISPLAY=:99.0
@@ -29,16 +29,12 @@ install:
 
 sudo: true # with ports higher then 1024 no need to use sudo
 
-#install:
-#  - npm install -g yarn # no need to install yarn https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#Travis-CI-supports-yarn
-#  - yarn # no need to even execute yarn if there is yarn.lock file
-
 before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "echo $SENV;"
   - php -S localhost:1025 & disown
-  - sleep 5
+  - sleep 3
   - curl localhost:1025/fixtures/event.php -I
   - "cd protractor"
   - php -v
@@ -46,4 +42,5 @@ before_script: # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Usin
   - yarn
 
 script:
+  # i'm still in protractor directory, then:
   - node node_modules/protractor/bin/protractor conf.js
