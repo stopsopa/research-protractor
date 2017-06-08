@@ -1,15 +1,42 @@
 'use strict';
 
-const sync = require('child_process').spawnSync;
+const config = (function () {
 
-let config = sync('php', ['../params/config.php']);
+    const sync = require('child_process').spawnSync;
 
-config = config.stdout.toString();
+    const cmd = Array.prototype.slice.call(arguments, 0);
 
-config = JSON.parse(config);
+    let config = sync.apply(this, cmd);
+
+    config = config.stdout.toString();
+
+    config = JSON.parse(config);
+
+    if (!config.parameters.seleniumAddress) {
+        process.stdout.write("\nthere is no 'seleniumAddress' parameter in config fetched by command " + JSON.stringify(cmd) + "\n");
+        process.exit(1);
+    }
+
+    const sel = sync('curl', [config.parameters.seleniumAddress, '-L', '--max-time', '2']);
+
+    if (sel.stdout.toString().indexOf('WebDriver Hub') === -1) {
+        process.stdout.write(
+            "Wrong curl response from endpoint : " +
+            config.parameters.seleniumAddress +
+            "\n\nstdout:\n" + sel.stdout.toString() +
+            "\n\nstderr:\n" + sel.stderr.toString() +
+            "\n\n"
+        );
+        process.exit(1);
+    }
+
+    return config;
+}('php', ['../params/config.php']));
+// few check before continuing ^^^
 
 module.exports = function () {
     return {
+        seleniumAddress: config.parameters.seleniumAddress,
         baseUrl: config.parameters.protocol + '://' + config.parameters.host + ((config.parameters.port == 80) ? '' : ':' + config.parameters.port),
         onPrepare: function() {
 
