@@ -45,11 +45,6 @@ if (process.env.TRAVIS) {
             browserName: 'chrome',
             platform: 'Windows 10',
             version: '58.0',
-        },
-        {
-            browserName: 'safari',
-            platform: 'macOS 10.12',
-            version: '10.0', 
         }
     ];
 
