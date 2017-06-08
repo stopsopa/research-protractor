@@ -35,6 +35,16 @@ const config = (function () {
         }
     }
 
+    var fs = require('fs');
+    var path = 'node_modules/webdriver-manager/selenium';
+    if (!fs.existsSync(path)) {
+        process.stdout.write(
+            "\nrun: node node_modules/protractor/bin/webdriver-manager update\n" +
+            `because file '${path}' is missing` +
+            "\n\n"
+        );        // Do something
+    }
+
     return config;
 }('php', ['../params/config.php']));
 // few check before continuing ^^^
