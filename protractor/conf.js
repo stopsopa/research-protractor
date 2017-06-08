@@ -35,11 +35,20 @@ if (process.env.TRAVIS) {
 
     config.sauceUser = process.env.SAUCE_USERNAME;
     config.sauceKey = process.env.SAUCE_ACCESS_KEY;
-    config.capabilities = {
-        'browserName': 'chrome',
-        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-        'build': process.env.TRAVIS_BUILD_NUMBER
-    };
+    config.multiCapabilities = [
+        {
+            browserName: 'chrome',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            build: process.env.TRAVIS_BUILD_NUMBER
+        },
+        {
+            browserName: 'chrome',
+            platform: 'Windows 10',
+            version: '58.0',
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            build: process.env.TRAVIS_BUILD_NUMBER
+        }
+    ];
 }
 
 // process.stdout.write(JSON.stringify(config, null, '    '));
