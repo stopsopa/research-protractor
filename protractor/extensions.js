@@ -23,10 +23,13 @@ const config = (function () {
 
         const sel = sync('curl', [config.parameters.seleniumAddress, '-L', '--max-time', '2']);
 
-        if (sel.stdout.toString().indexOf('WebDriver Hub') === -1) {
+        if (
+            sel.stdout.toString().indexOf('WebDriver Hub') === -1 && // single node endpoint
+            sel.stdout.toString().indexOf('java.lang.NullPointerException') === -1    // hub endpoint
+        ) {
             process.stdout.write(
                 "Wrong curl response from endpoint : " +
-                config.parameters.seleniumAddress +
+                config.parameters.selenium_address +
                 "\n\nstdout:\n" + sel.stdout.toString() +
                 "\n\nstderr:\n" + sel.stderr.toString() +
                 "\n\n"
@@ -39,7 +42,8 @@ const config = (function () {
     var path = 'node_modules/webdriver-manager/selenium';
     if (!fs.existsSync(path)) {
         process.stdout.write(
-            "\nrun: node node_modules/protractor/bin/webdriver-manager update\n" +
+            "\nif you wan't to run local selenium server run\n" +
+            "\nnode node_modules/protractor/bin/webdriver-manager update\n" +
             `because file '${path}' is missing` +
             "\n\n"
         );        // Do something
