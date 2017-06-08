@@ -12,22 +12,27 @@ const config = (function () {
 
     config = JSON.parse(config);
 
-    if (!config.parameters.seleniumAddress) {
-        process.stdout.write("\nthere is no 'seleniumAddress' parameter in config fetched by command " + JSON.stringify(cmd) + "\n");
-        process.exit(1);
+    if (process.env.TRAVIS) {
+        delete config.seleniumAddress;
     }
+    else {
+        if (!config.parameters.seleniumAddress) {
+            process.stdout.write("\nthere is no 'seleniumAddress' parameter in config fetched by command " + JSON.stringify(cmd) + "\n");
+            process.exit(1);
+        }
 
-    const sel = sync('curl', [config.parameters.seleniumAddress, '-L', '--max-time', '2']);
+        const sel = sync('curl', [config.parameters.seleniumAddress, '-L', '--max-time', '2']);
 
-    if (sel.stdout.toString().indexOf('WebDriver Hub') === -1) {
-        process.stdout.write(
-            "Wrong curl response from endpoint : " +
-            config.parameters.seleniumAddress +
-            "\n\nstdout:\n" + sel.stdout.toString() +
-            "\n\nstderr:\n" + sel.stderr.toString() +
-            "\n\n"
-        );
-        process.exit(1);
+        if (sel.stdout.toString().indexOf('WebDriver Hub') === -1) {
+            process.stdout.write(
+                "Wrong curl response from endpoint : " +
+                config.parameters.seleniumAddress +
+                "\n\nstdout:\n" + sel.stdout.toString() +
+                "\n\nstderr:\n" + sel.stderr.toString() +
+                "\n\n"
+            );
+            process.exit(1);
+        }
     }
 
     return config;
@@ -35,8 +40,7 @@ const config = (function () {
 // few check before continuing ^^^
 
 module.exports = function () {
-    return {
-        seleniumAddress: config.parameters.seleniumAddress,
+    var setup = {
         baseUrl: config.parameters.protocol + '://' + config.parameters.host + ((config.parameters.port == 80) ? '' : ':' + config.parameters.port),
         onPrepare: function() {
 
@@ -134,4 +138,10 @@ return false;
 
         }
     }
+
+    if (!process.env.TRAVIS) {
+        setup.seleniumAddress = config.parameters.seleniumAddress;
+    }
+
+    return setup;
 };
