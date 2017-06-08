@@ -35,20 +35,28 @@ if (process.env.TRAVIS) {
 
     config.sauceUser = process.env.SAUCE_USERNAME;
     config.sauceKey = process.env.SAUCE_ACCESS_KEY;
-    config.multiCapabilities = [
+    config.multiCapabilities = [ // https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
         {
-            browserName: 'chrome',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            build: process.env.TRAVIS_BUILD_NUMBER
+            browserName: 'firefox',
+            platform: 'macOS 10.12',
+            version: '53.0'
         },
         {
             browserName: 'chrome',
             platform: 'Windows 10',
             version: '58.0',
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            build: process.env.TRAVIS_BUILD_NUMBER
+        },
+        {
+            browserName: 'safari',
+            platform: 'macOS 10.12',
+            version: '10.0',
         }
     ];
+
+    for (var i in config.multiCapabilities) {
+        config.multiCapabilities[i]['tunnel-identifier'] = process.env.TRAVIS_JOB_NUMBER;
+        config.multiCapabilities[i]['build'] = process.env.TRAVIS_BUILD_NUMBER;
+    }
 }
 
 // process.stdout.write(JSON.stringify(config, null, '    '));
