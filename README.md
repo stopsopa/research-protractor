@@ -48,9 +48,41 @@ Run selenium
     docker run --rm -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium
     docker run --rm -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
     docker run --rm -d --link selenium-hub:hub selenium/node-firefox:3.4.0-chromium
+    
+    then test:
+        # ip of docker-machine
+        curl 192.168.180.130:4444/wd/hub
      
     -
     
+Compose:
+
+- https://carlosbecker.com/posts/selenium-grid-docker-compose/
+
+
+    selenium-hub:
+      image: selenium/hub:3.4.0-chromium
+      ports:
+        - 4444:4444
+    
+    selenium-chrome:
+      image: selenium/node-chrome:3.4.0-chromium
+      ports:
+        - 5900
+      links:
+        - selenium-hub:hub
+    
+    selenium-firefox:
+      image: selenium/node-firefox:3.4.0-chromium
+      ports:
+        - 5900
+      links:
+        - selenium-hub:hub
+        
+and run
+            
+    docker-compose up -d
+
 Then go to http://localhost:4444/grid/console
     
 Run on prod (restarting containers periodically):
