@@ -10,7 +10,13 @@ const config = (function () {
 
     config = config.stdout.toString();
 
-    config = JSON.parse(config);
+    try {
+        config = JSON.parse(config);
+    }
+    catch (e) {
+        process.stdout.write("Config parse json error, check command: \n" + cmd[0] + ' ' + cmd[1].join(' ') + "\n");
+        process.exit(1);
+    }
 
     if (process.env.TRAVIS) {
         delete config.seleniumAddress;
