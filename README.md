@@ -30,13 +30,32 @@ Microsoft virtual machines images:
 - https://github.com/crohr/ebarnouflant/issues/7
 - https://github.com/dmstr/phd5-docs/blob/master/guide/tutorials/testing-internet-explorer.md
 
+Building vagrant image:
+    
+- download image from:  
+
+     VBoxManage import ./MSEdgeWin10_preview.ova --vsys 0 --eula accept
+     VBoxManage list vms
+     vagrant package --base 9cbc92eb-77a7-4f1f-80cd-bcf9b4067208 --output MsEdgeWin10preview.box
+     vagrant box add MsEdgeWin10preview.box --name MsEdgeWin10preview
+
 Run selenium
 
-    docker run -d --rm -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium
-    docker run -d --rm --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
-    docker run -d --rm --link selenium-hub:hub selenium/node-firefox:3.4.0-chromium
+    docker run --restart=always -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium
+    docker run --restart=always -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
+    docker run --restart=always -d --link selenium-hub:hub selenium/node-firefox:3.4.0-chromium
+       
+    docker run --rm -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium
+    docker run --rm -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
+    docker run --rm -d --link selenium-hub:hub selenium/node-firefox:3.4.0-chromium
+     
+    -
+    
+Then go to http://localhost:4444/grid/console
+    
+Run on prod (restarting containers periodically):
 
-
+- https://www.addteq.com/blog/2016/09/setting-up-a-selenium-grid-with-docker-containers-for-multi-browser-coverage
 
 Addons:
 
