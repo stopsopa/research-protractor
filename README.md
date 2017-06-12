@@ -32,14 +32,15 @@ Microsoft virtual machines images:
 
 Building vagrant image:
     
-- download image from:  
+download image from:  
 
      VBoxManage import ./MSEdgeWin10_preview.ova --vsys 0 --eula accept
      VBoxManage list vms
      vagrant package --base 9cbc92eb-77a7-4f1f-80cd-bcf9b4067208 --output MsEdgeWin10preview.box
      vagrant box add MsEdgeWin10preview.box --name MsEdgeWin10preview
 
-- Run selenium
+Run selenium
+
 
     docker run --restart=always -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium
     docker run --restart=always -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
@@ -49,7 +50,8 @@ Building vagrant image:
     docker run --rm -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
     docker run --rm -d --link selenium-hub:hub selenium/node-firefox:3.4.0-chromium
     
-    then test:
+then test:
+    
         # ip of docker-machine
         curl 192.168.180.130:4444/wd/hub
      
@@ -57,7 +59,8 @@ Building vagrant image:
     
 Compose:
 
-- https://carlosbecker.com/posts/selenium-grid-docker-compose/
+https://carlosbecker.com/posts/selenium-grid-docker-compose/
+
 
 
     selenium-hub:
