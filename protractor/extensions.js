@@ -156,8 +156,17 @@ return false;
 
                 mode = !!mode;
 
-                browser.ignoreSynchronization = !mode;
-                browser.waitForAngularEnabled(mode);
+
+                        browser.ignoreSynchronization = !mode;
+                        browser.waitForAngularEnabled(mode);
+
+                // browser.waitForAngularEnabled(browser.ignoreSynchronization = false);
+                //
+                // if (mode) {
+                //     browser.waitJs(function () {
+                //         return typeof window.angular != 'undefined';
+                //     }, timeout)
+                // }
             };
 
         }
