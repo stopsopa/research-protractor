@@ -1,13 +1,12 @@
 <?php
 
+$config = [
+    'parameters' => [
+        'protocol' => 'http',
+        'host' => 'localhost',
+        'port' => '1025',
+        'selenium_address' => 'http://192.168.180.130:4444/wd/hub'
+    ]
+];
 
-echo <<<EOF
-{
-    "parameters": {
-        "protocol": "http",
-        "host": "localhost",
-        "port": 1025,
-        "seleniumAddress" : "http://localhost:4444/wd/hub"
-    }
-}
-EOF;
+echo json_encode($config, JSON_PRETTY_PRINT);
