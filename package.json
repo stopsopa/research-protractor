@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "protractor": "cd protractor && node node_modules/protractor/bin/protractor conf.js"
+  }
+}

@@ -39,7 +39,7 @@ Building vagrant image:
      vagrant package --base 9cbc92eb-77a7-4f1f-80cd-bcf9b4067208 --output MsEdgeWin10preview.box
      vagrant box add MsEdgeWin10preview.box --name MsEdgeWin10preview
 
-Run selenium
+- Run selenium
 
     docker run --restart=always -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium
     docker run --restart=always -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium

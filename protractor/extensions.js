@@ -19,15 +19,15 @@ const config = (function () {
     }
 
     if (process.env.TRAVIS) {
-        delete config.seleniumAddress;
+        delete config.selenium_address;
     }
     else {
-        if (!config.parameters.seleniumAddress) {
-            process.stdout.write("\nthere is no 'seleniumAddress' parameter in config fetched by command " + JSON.stringify(cmd) + "\n");
+        if (!config.parameters.selenium_address) {
+            process.stdout.write("\nthere is no 'selenium_address' parameter in config fetched by command " + JSON.stringify(cmd) + "\n");
             process.exit(1);
         }
 
-        const sel = sync('curl', [config.parameters.seleniumAddress, '-L', '--max-time', '2']);
+        const sel = sync('curl', [config.parameters.selenium_address, '-L', '--max-time', '2']);
 
         if (
             sel.stdout.toString().indexOf('WebDriver Hub') === -1 && // single node endpoint
@@ -54,6 +54,10 @@ const config = (function () {
             "\n\n"
         );        // Do something
     }
+
+
+    // process.stdout.write(JSON.stringify(config, null, '    ') + "\n");
+    // process.exit(1);
 
     return config;
 }('php', ['../params/config.php']));
@@ -160,7 +164,7 @@ return false;
     }
 
     if (!process.env.TRAVIS) {
-        setup.seleniumAddress = config.parameters.seleniumAddress;
+        setup.seleniumAddress = config.parameters.selenium_address;
     }
 
     return setup;
