@@ -50,6 +50,8 @@ Run selenium
     docker run --rm -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium
     docker run --rm -d --link selenium-hub:hub selenium/node-firefox:3.4.0-chromium
     
+    -
+    
 then test:
     
         # ip of docker-machine
