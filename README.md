@@ -79,7 +79,7 @@ Run on prod (restarting containers periodically):
 
 - https://www.addteq.com/blog/2016/09/setting-up-a-selenium-grid-with-docker-containers-for-multi-browser-coverage
 
-# internet explorer vvv
+# adding windows and edge to docker hub vvv
 
 Microsoft virtual machines images - useful links:
 
@@ -100,8 +100,49 @@ and convert to vagrant image like:
      vagrant box add MsEdgeWin10preview.box --name MsEdgeWin10preview     
      
      
-disable firewall (to be able to ping)     
+then create instance of this machine using Vagrantfile:
+     
+     
+    Vagrant.configure("2") do |config|
+            
+      config.vm.box = "MsEdgeWin10preview"
+      
+      # config.vm.box_url = "/linux/path/to/box/file/vagrant-windows-edge.box"
+    
+      config.ssh.insert_key = false  
+    
+      config.vm.network "public_network"
+    
+      config.vm.provider "virtualbox" do |vb|
+    
+        vb.memory = "2524"
+        vb.gui = true
+        
+        vb.name = "vagrant-windows-edge"
+      end
+    end
+     
+inside machine do:     
+     
+disable firewall (to be able to ping)  
+disable NAT interface from inside, leave only BRIDGE interface [http://i.imgur.com/fo9cHDl.png]  
 check if you can ping from hub to windows and from windows to hub
+
+install TightVNC to have access to windows gui on headless servers: http://www.tightvnc.com/
+
+disable machine and create box from it
+
+
+    vagrant package --base vagrant-windows-edge
+    
+after that you will end up with image vagrant-windows-edge.box that you can copy to linux server and 
+instantiate machine with vnc access using above Vagrantfile, Just switch config.vm.box records.
+
+After creating this way windows virtual machine just login using safari throug vnc endpoint:
+
+    vnc://xxx.xxx.xxx.xxx
+    
+then inside:
 
 install java: http://java.com/en/download/manual.jsp
 
@@ -122,18 +163,19 @@ C:\\Program Files (x86)\\Microsoft Web Driver\\MicrosoftWebDriver.exe
 download selenium jar file:
 http://www.seleniumhq.org/download/
 
-then run selenium:
+Put selenium jar file and MicrosoftWebDriver.exe to one directory and from this directory run selenium:
 
     java -jar selenium-server-standalone-3.4.0.jar -role node -port 5555 -hub http://192.168.180.130:4444/grid/register -browser "browserName=MicrosoftEdge,platform=WINDOWS"
     
 
      
+other params:     
      
 java -jar selenium-server-standalone-2.53.0.jar -port 5555 -role node -hub http://<host>:4444/grid/register -browser "browserName=MicrosoftEdge,platform=WINDOWS,maxInstances=10" -Dwebdriver.edge.driver=C:/Path/To/MicrosoftWebDriver.exe
      
 java -Dwebdriver.edge.driver=C:\Selenium\MicrosoftWebDriver.exe -Dwebdriver.chrome.driver=C:\Selenium\chromedriver.exe -jar C:\Selenium\selenium-server-standalone-3.0.1.jar -role webdriver -hub http://10.10.1.20:4444/grid/register -port 5566 -maxSession 5 -browser "browserName=MicrosoftEdge,platform=WINDOWS" -browser "browserName=chrome,platform=WINDOWS,maxInstances=5" -browser "browserName=firefox,platform=WINDOWS,maxInstances=5"     
      
-# internet explorer ^^^
+# adding windows and edge to docker hub ^^^
 
 Addons:
 
