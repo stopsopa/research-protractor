@@ -20,11 +20,17 @@ var config = Object.assign(extensions(), {
     SELENIUM_PROMISE_MANAGER: true,
 
     multiCapabilities: [
-        { // http://www.protractortest.org/#/tutorial#step-3-changing-the-configuration
-            browserName: 'firefox'
+        {
+            browserName: "MicrosoftEdge",
+            platform: "WINDOWS"
         },
         {
-            browserName: 'chrome'
+            browserName: "chrome",
+            platform: "WINDOWS"
+        },
+        {
+            browserName: "firefox",
+            platform: "WINDOWS"
         }
     ]
 });

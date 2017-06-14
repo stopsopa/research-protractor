@@ -188,15 +188,22 @@ Put selenium jar file and MicrosoftWebDriver.exe to one directory and from this 
     java -jar selenium-server-standalone-3.4.0.jar -role node -port 5555 -hub http://192.168.180.130:4444/grid/register -browser "browserName=MicrosoftEdge,platform=WINDOWS"
     
 
+https://github.com/SeleniumHQ/selenium/wiki/Grid2#optional-parameters
      
 other params:  
    
 ssh tunnel: 
-   https://confluence.jetbrains.com/display/PhpStorm/Remote+debugging+in+PhpStorm+via+SSH+tunnel#RemotedebugginginPhpStormviaSSHtunnel-2.SetupanSSHtunneltotheremotemachine
+    https://confluence.jetbrains.com/display/PhpStorm/Remote+debugging+in+PhpStorm+via+SSH+tunnel#RemotedebugginginPhpStormviaSSHtunnel-2.SetupanSSHtunneltotheremotemachine
+    https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel
      
 java -jar selenium-server-standalone-2.53.0.jar -port 5555 -role node -hub http://<host>:4444/grid/register -browser "browserName=MicrosoftEdge,platform=WINDOWS,maxInstances=10" -Dwebdriver.edge.driver=C:/Path/To/MicrosoftWebDriver.exe
      
-java -Dwebdriver.edge.driver=C:\Selenium\MicrosoftWebDriver.exe -Dwebdriver.chrome.driver=C:\Selenium\chromedriver.exe -jar C:\Selenium\selenium-server-standalone-3.0.1.jar -role webdriver -hub http://10.10.1.20:4444/grid/register -port 5566 -maxSession 5 -browser "browserName=MicrosoftEdge,platform=WINDOWS" -browser "browserName=chrome,platform=WINDOWS,maxInstances=5" -browser "browserName=firefox,platform=WINDOWS,maxInstances=5"     
+java -Dwebdriver.edge.driver=C:\Selenium\MicrosoftWebDriver.exe -Dwebdriver.chrome.driver=C:\Selenium\chromedriver.exe -jar C:\Selenium\selenium-server-standalone-3.0.1.jar -role webdriver -hub http://10.10.1.20:4444/grid/register -port 5566 -maxSession 5 -browser "browserName=MicrosoftEdge,platform=WINDOWS" -browser "browserName=chrome,platform=WINDOWS,maxInstances=5" -browser "browserName=firefox,platform=WINDOWS,maxInstances=5"
+     
+config.json https://seleniumhq.github.io/docs/grid.html     
+
+wget http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
+java -jar selenium-server-standalone-3.4.0.jar -role hub
      
 # adding windows and edge to docker hub ^^^
 
