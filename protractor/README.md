@@ -15,7 +15,7 @@ To start tests:
     cd protractor
     npm run protractor
     
-You can also run single lub wildarded tests like:
+You can also run single lub "wildcarded" tests like:
     
     cd protractor
     npm run protractor -- --specs ../tests/e2e/angular/calc-many-scenarious.spec.js
