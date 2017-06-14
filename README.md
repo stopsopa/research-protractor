@@ -167,6 +167,8 @@ download matching WebDriver for browser:
 - https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 - http://www.automationtestinghub.com/selenium-3-launch-microsoft-edge-with-microsoftwebdriver/
 
+.
+
 
 
     systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
