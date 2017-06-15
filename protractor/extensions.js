@@ -160,7 +160,16 @@ return false;
                         browser.ignoreSynchronization = !mode;
                         browser.waitForAngularEnabled(mode);
 
-                // browser.waitForAngularEnabled(browser.ignoreSynchronization = false);
+                // var args = Array.prototype.slice.call(arguments, 0);
+                //
+                // var timeout = (typeof args[1] === 'undefined') ? 10000 : args[1];
+                //
+                // if ( ! (timeout > 0) ) {
+                //     timeout = 10;
+                // }
+                //
+                // browser.waitForAngularEnabled(mode);
+                // browser.ignoreSynchronization = !mode;
                 //
                 // if (mode) {
                 //     browser.waitJs(function () {
