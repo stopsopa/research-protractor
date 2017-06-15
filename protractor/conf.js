@@ -24,6 +24,11 @@ var config = Object.assign(extensions(), {
             browserName: "MicrosoftEdge",
             platform: "WINDOWS"
         },
+        // {
+        //     browserName: "internet explorer",
+        //     version: 11,
+        //     platform: "WINDOWS"
+        // },
         {
             browserName: "chrome",
             platform: "WINDOWS"
@@ -31,7 +36,19 @@ var config = Object.assign(extensions(), {
         {
             browserName: "firefox",
             platform: "WINDOWS"
-        }
+        },
+        {
+            browserName: "chrome",
+            platform: "MAC"
+        },
+        {
+            browserName: "firefox",
+            platform: "MAC"
+        },
+        {
+            browserName: "safari",
+            platform: "MAC"
+        },
     ]
 });
 
