@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "protractor": "^5.1.2"
-  },
-  "scripts": {
-    "protractor": "node node_modules/protractor/bin/protractor conf.js"
-  }
-}
