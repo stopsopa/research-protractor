@@ -4,7 +4,7 @@ cd /Users/admin/Workspace/sel/mac
 
 VBoxManage startvm "vagrant-windows-edge"
 
-sleep 70 && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://138.68.156.126:4444/grid/console &
+sleep 70 && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://138.68.156.126:4444/grid/console?refresh=10 &
 
 /bin/bash start-selenium.sh 
 
