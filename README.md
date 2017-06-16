@@ -1,5 +1,15 @@
 [![Build Status](https://travis-ci.org/stopsopa/research-protractor.svg?branch=master)](https://travis-ci.org/stopsopa/research-protractor)
 
+
+    tell application "Terminal"
+	    do script "/Applications/iTerm.app/Contents/MacOS/iTerm2 ~/startup"
+    end tell
+
+
+
+
+Main concept is that we need 
+
 Most important:
 
 - table of content: http://www.protractortest.org/#/toc
