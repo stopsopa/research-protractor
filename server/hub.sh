@@ -2,11 +2,9 @@
 
 echo "stopping hub"
 
-kill -9 $(ps aux | grep -v grep | grep selenium | awk '{print $2}')
+kill -9 $(ps aux | grep -v grep | grep selenium | grep -v $$ | awk '{print $2}')
 
 echo 'is killed?'
-
-ps aux | grep -v grep | grep selenium
 
 if [ "$1" != "stop" ]; then
     echo "starting hub"
