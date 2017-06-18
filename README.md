@@ -67,7 +67,7 @@ chrome, firefox and safari from host mac machine should be already registered in
     
 # Creating and configuring virtual machine with Windows
     
-First we need to download one of [Windows vagrant image](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/)
+First we need to download one of Windows [images](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/). In our case "Microsoft Edge on Win10 (x64) Stable (15.15063)"
     
 google: "Test Microsoft Edge and versions of IE8 through IE11 using free virtual machines you download and manage locally."    
     
