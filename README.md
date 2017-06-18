@@ -1,6 +1,7 @@
 To prepare selenium server first is good to understand what and how we want to achieve.
 
 The general schema is:
+![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/schema.png)
 
 
 On schema we can see that two selenium nodes (one on host mac and another form windows on virtual machine) gonna register themselvs to hub. From now on hub will spread instructions betwen two nodes and will be able to control browsers automatically. 
