@@ -1,5 +1,16 @@
 'use strict';
 
+const log = console.log;
+
+function json (arr) {
+    var i = 0, tmp = '[';
+    arr.forEach(function (d) {
+        tmp += (i ? ',' : '') + "\n    " + JSON.stringify(d);
+        i += 1;
+    });
+    return tmp + "\n]";
+}
+
 const config = (function () {
 
     const sync = require('child_process').spawnSync;
@@ -8,7 +19,7 @@ const config = (function () {
 
     function testEndpoint(url) {
 
-        const sel = sync('curl', [url, '-L', '--max-time', '1']);
+        const sel = sync('curl', [url, '-i']);
 
         return ! (
             sel.stdout.toString().indexOf('WebDriver Hub') === -1 && // single node endpoint
@@ -32,8 +43,6 @@ const config = (function () {
         process.stdout.write("\nthere is no 'selenium_address' parameter in config fetched by command " + JSON.stringify(cmd) + "\n");
         process.exit(1);
     }
-
-
 
     if ( testEndpoint(config.parameters.selenium_address_local) ) {
         config.parameters.selenium_address = config.parameters.selenium_address_local
@@ -66,8 +75,96 @@ const config = (function () {
 // }('php', ['../bin/console', 'params']));
 }('php', ['config.php']));
 
-module.exports = function () {
-    return {
+var exclude = (function () {
+
+    var log = console.log;
+
+    return function (declared) {
+
+        let endpoint = config.parameters.selenium_address;
+
+        endpoint = endpoint.replace(/^(https?:\/\/[^\/]*).*$/, '$1');
+
+        const sync          = require('child_process').spawnSync;
+
+        const nodes = sync('curl', [endpoint + '/grid/console', '-L', '--max-time', '1']);
+
+        var html = nodes.output.toString();
+
+        var available = [];
+
+        html.replace(/remoteHost: (https?:\/\/[^<]+)</g, function (e, url) {
+            available.push(url);
+        });
+
+        available = available.map(function (url) {
+
+            let res = sync('curl', [[endpoint, '/grid/api/proxy?id=', url].join(''), '-L', '-s', '--max-time', '1']);
+
+            res = res.output.toString();
+
+            res = res.replace(/^[,\s]+(.*?)[,\s]*$/, '$1');
+
+            res = JSON.parse(res);
+
+            return res.request.configuration.capabilities;
+        })
+
+        available = Array.prototype.concat.apply([], available);
+
+        available = JSON.parse(JSON.stringify(available).toLowerCase());
+
+        var declaredcp = JSON.parse(JSON.stringify(declared).toLowerCase());
+
+        log(':protractor: declared:', json(declared));
+
+        log(':protractor: available:', json(available));
+
+        var list = [];
+
+        for (var i = 0, l = declaredcp.length ; i < l ; i += 1 ) {
+            for (var ii = 0, ll = available.length ; ii < ll ; ii += 1 ) {
+                if (declaredcp[i].browsername === available[ii].browsername && declaredcp[i].platform === available[ii].platform) {
+                    list.push(declared[i])
+                    break;
+                }
+            }
+        }
+
+        var notfound = JSON.parse(JSON.stringify(declaredcp));
+        var listcp = JSON.parse(JSON.stringify(list).toLowerCase());
+
+        for (var i = 0, l = listcp.length ; i < l ; i += 1 ) {
+            for (var ii = 0, ll = notfound.length ; ii < ll ; ii += 1 ) {
+                if (listcp[i].browsername === notfound[ii].browsername && listcp[i].platform === notfound[ii].platform) {
+                    notfound.splice(ii, 1);
+                    break;
+                }
+            }
+        }
+
+        log(':protractor: final:', json(list));
+
+        if (!list.length) {
+            log("Not found even one matching browser");
+            process.exit(1);
+        }
+
+        if (notfound.length) {
+            log('-'.repeat(40) + "\n");
+            log(':protractor: not found:', json(notfound));
+            log('-'.repeat(40) + "\n");
+        }
+
+        log = function () {};
+
+        return list;
+    }
+}());
+
+module.exports = function (raw) {
+    return Object.assign(raw, {
+        multiCapabilities: exclude(raw.multiCapabilities),
         seleniumAddress: config.parameters.selenium_address,
         baseUrl: config.parameters.protocol + '://' + config.parameters.host + ((config.parameters.port == 80) ? '' : ':' + config.parameters.port),
         onPrepare: function () {
@@ -203,5 +300,5 @@ return false;
                 browser.sleep(sleep || 2000);
             }
         }
-    }
+    })
 };

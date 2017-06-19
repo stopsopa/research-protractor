@@ -5,7 +5,7 @@ var extensions = require('./extensions.js');
 /**
  * conf spec: https://github.com/angular/protractor/blob/5.1.2/lib/config.ts#L644
  */
-var config = Object.assign(extensions(), {
+var config = extensions({
     specs: [
         '../tests/e2e/**/*.spec.js' // for sauce labs test only local
     ],
@@ -19,37 +19,34 @@ var config = Object.assign(extensions(), {
     SELENIUM_PROMISE_MANAGER: true,
 
     multiCapabilities: [
-        // {
-        //     browserName: "MicrosoftEdge",
-        //     platform: "WINDOWS"
-        // },
-        // {
-        //     browserName: "internet explorer",
-        //     version: '11',
-        //     platform: "WINDOWS"
-        // },
-        // {
-        //     browserName: "chrome",
-        //     platform: "WINDOWS"
-        // },
-        // {
-        //     browserName: "firefox",
-        //     platform: "WINDOWS"
-        // },
+        {
+            browserName: "MicrosoftEdge",
+            platform: "WIN10"
+        },
+        {
+            browserName: "internet explorer",
+            version: '11',
+            platform: "WIN10"
+        },
         {
             browserName: "chrome",
-            platform: "MAC",
-            chromeOptions: {
-                args: ['--window-size=768,768'] // THIS!
-            }
+            platform: "WIN10"
         },
-        // {
-        //     browserName: "firefox",
-        //     platform: "MAC"
-        // },
+        {
+            browserName: "firefox",
+            platform: "WIN10"
+        },
+        {
+            browserName: "chrome",
+            platform: "macOS 10.12"
+        },
+        {
+            browserName: "firefox",
+            platform: "macOS 10.12"
+        },
         {
             browserName: "safari",
-            platform: "MAC"
+            platform: "macOS 10.12"
         },
     ]
 });
