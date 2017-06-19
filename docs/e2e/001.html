@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <button id="go">go</button>
+    <div></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('button').addEventListener('click', function () {
+                document.querySelector('div').innerHTML += 'clicked ';
+            });
+        });
+    </script>
+</body>
+</html>
