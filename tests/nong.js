@@ -5,7 +5,7 @@ describe('Protractor Demo App', function() {
 
     it('no angular', function () {
 
-        browser.angular(true);
+        browser.angular(false);
 
         browser.get('https://stopsopa.github.io/research-protractor/e2e/nong.html');
 
@@ -17,6 +17,6 @@ describe('Protractor Demo App', function() {
 
         browser.sleep(2000);
 
-        expect($('div').getText()).toEqual("clicked");
+        expect($('div').getText()).toEqual("clicked ");
     });
 });

@@ -80,7 +80,7 @@ Next install inside VM:
 - [chrome](https://www.google.com/chrome/browser/desktop/index.html)
 - [firefox](https://www.mozilla.org/en-GB/firefox/new/)
 
-and this git clone repository and go to *windows* directory in this repository and run:
+Clone this repository and go to *windows* directory in this repository and run:
     
 (before running this below commands, make sure that you have authorised ssh key in under path *..\ssh\id_rsa.ppk* to connect to server)
 
@@ -88,7 +88,7 @@ additionally before running this setup ie 11 like it is described here:
 http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/#step4
 
 img copy because article is not new and there is risk that it can disappear:
-google(Run Protractor Against Internet Explorer VM)
+google(Run Protractor Against Internet Explorer VM elgulu)
 ![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/ie11-setup.jpg)
 
 source for IEWebdriver : http://selenium-release.storage.googleapis.com/
