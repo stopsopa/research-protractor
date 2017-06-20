@@ -2,3 +2,6 @@
 /WinSCP.ini
 /.vagrant/
 node_modules
+npm-debug.log
+
+

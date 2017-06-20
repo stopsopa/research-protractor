@@ -3,7 +3,7 @@
     "protractor": "^5.1.2"
   },
   "scripts": {
-    "pr": "node node_modules/protractor/bin/protractor conf.js",
+    "pr": "PROT_SESSION=$(date +%Y-%m-%d-%H-%M-%S) node node_modules/protractor/bin/protractor conf.js",
     "start": "/bin/bash server.sh",
     "stop": "/bin/bash server.sh stop"
   }
