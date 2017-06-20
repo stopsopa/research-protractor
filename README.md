@@ -117,9 +117,12 @@ Following instructions from (https://www.davidbaumgold.com/tutorials/wine-mac/#m
     
 [start.sh](https://github.com/stopsopa/research-protractor/blob/master/mac/startup.sh)
         
-# Example test
+# Console
         
     npm run pr -- --specs ../tests/nong.js
+    npm run start
+    npm run stop
+    npm run status
         
 # Usefull links
 
