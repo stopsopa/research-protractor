@@ -19,11 +19,11 @@ if [ "$1" != "stop" ]; then
     fi
 
     java -jar ../selenium-server-standalone-3.4.0.jar -role hub & disown
-    java -jar ../selenium-server-standalone-3.4.0.jar -role node -port 5555 -host 127.0.0.1 -hub http://localhost:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=MAC" -browser "browserName=firefox, maxInstances=10, platform=MAC" -browser "browserName=safari, maxInstances=10, platform=MAC" & disown
+    java -jar ../selenium-server-standalone-3.4.0.jar -role node -port 5555 -host 127.0.0.1 -hub http://localhost:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" -browser "browserName=firefox, maxInstances=10, platform=SIERRA" -browser "browserName=safari, maxInstances=10, platform=SIERRA" & disown
 
     sleep 8
 
-    echo 'up and running... visit: http://localhost:4444/grid/console?config=true&configDebug=true&refresh=10'
+    echo -e "\n\nup and running... visit: \n    http://localhost:4444/grid/console?config=true&configDebug=true&refresh=10\n\n"
 fi
 
 
