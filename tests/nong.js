@@ -17,6 +17,6 @@ describe('Protractor Demo App', function() {
 
         browser.sleep(2000);
 
-        expect($('div').getText()).toEqual("clicked ");
+        expect($('div').getText().then((a) => a.trim())).toEqual("clicked");
     });
 });
