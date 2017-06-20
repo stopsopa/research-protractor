@@ -4,6 +4,7 @@
   },
   "scripts": {
     "pr": "rm -rf sessions/* && PROT_SESSION=$(date +%Y-%m-%d-%H-%M-%S) node node_modules/protractor/bin/protractor conf.js",
+    "status": "curl localhost:4444 &> /dev/null && echo 'local' || echo 'public'",
     "start": "/bin/bash server.sh",
     "stop": "/bin/bash server.sh stop"
   }
