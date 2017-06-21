@@ -144,17 +144,6 @@ const config = (function () {
         }
     }
 
-    var fs = require('fs');
-    var path = 'node_modules/webdriver-manager/selenium';
-    if (!fs.existsSync(path)) {
-        process.stdout.write(
-            "\nif you wan't to run local selenium server run\n" +
-            "\nnode node_modules/protractor/bin/webdriver-manager update\n" +
-            `because file '${path}' is missing` +
-            "\n\n"
-        );        // Do something
-    }
-
     cache.save(config, true);
 
     return config;
@@ -173,7 +162,7 @@ var exclude = (function () {
 
         const sync          = require('child_process').spawnSync;
 
-        const nodes = sync('curl', [endpoint + '/grid/console', '-L', '--max-time', '1']);
+        const nodes = sync('curl', [endpoint + '/grid/console', '-L', '--max-time', '5']);
 
         var html = nodes.output.toString();
 
