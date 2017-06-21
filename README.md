@@ -36,6 +36,7 @@ Hub should be now up and running...
   
 Make sure that you have installed:
 
+- VirtualBox Guest Additions
 - [git](https://git-scm.com/) 
 - [java](https://java.com/en/download/manual.jsp) 
 - [chrome](https://www.google.com/chrome/browser/desktop/index.html)
