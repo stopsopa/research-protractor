@@ -76,6 +76,7 @@ Then we can create Virtual machine using [Vagrantfile](https://github.com/stopso
     
 Next install inside VM: 
 
+- [ContextConsole Shell Extension](http://code.kliu.org/cmdopen/)
 - [git](https://git-scm.com/) 
 - [java](https://java.com/en/download/manual.jsp) 
 - [chrome](https://www.google.com/chrome/browser/desktop/index.html)
