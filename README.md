@@ -82,6 +82,9 @@ Next install inside VM:
 - [chrome](https://www.google.com/chrome/browser/desktop/index.html)
 - [firefox](https://www.mozilla.org/en-GB/firefox/new/)
 
+Execute two .reg files windows/feature_bfcache32.reg and windows/feature_bfcache64.reg
+
+
 Clone this repository and go to *windows* directory in this repository and run:
     
 (before running this below commands, make sure that you have authorised ssh key in under path *..\ssh\id_rsa.ppk* to connect to server)
