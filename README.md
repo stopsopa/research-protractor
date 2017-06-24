@@ -1,3 +1,19 @@
+
+Table of contents
+=================
+
+  * [Overview](#overview)
+  * [Building HUB](#building-hub)
+  * [Setup Mac (host) node and configure browsers](setup-mac-host-node-and-configure-browsers)
+  * [Creating and configuring virtual machine with Windows](creating-and-configuring-virtual-machine-with-windows)
+  * [Launch at startup Windows](launch-at-startup-windows)
+  * [Launch at startup Mac](launch-at-startup-mac)
+  * [NPM Command line](#npm-command-line)
+  * [VNC access](#vnc-access)
+  * [Usefull links](#usefull-links)
+
+# Overview
+
 To prepare selenium server first is good to understand what and how we want to achieve.
 
 The general schema is:
@@ -125,14 +141,14 @@ Following instructions from (https://www.davidbaumgold.com/tutorials/wine-mac/#m
     
 [start.sh](https://github.com/stopsopa/research-protractor/blob/master/mac/startup.sh)
         
-# Console
+# NPM Command line
         
     npm run pr -- --specs ../tests/nong.js
     npm run start
     npm run stop
     npm run status
     
-# VNC
+# VNC access
 
 check https://github.com/stopsopa/research-protractor/blob/master/mac/vnc-tunnel.sh
 
