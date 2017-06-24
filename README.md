@@ -156,7 +156,7 @@ Following instructions from (https://www.davidbaumgold.com/tutorials/wine-mac/#m
     
 scripts to run at startup 
 
-    /bin/bash mac/start-selenium.sh
+    /bin/bash mac/startup.sh
     
 [start.sh](https://github.com/stopsopa/research-protractor/blob/master/mac/startup.sh)
         
