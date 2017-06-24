@@ -2,6 +2,8 @@
 
 /bin/bash start-tunnel.sh 
 
+kill -9 $(ps aux | grep -v grep | grep vnc-tunnel | awk '{print $2}') &> /dev/null
+
 /bin/bash vnc-tunnel.sh & disown
 
 kill -9 $(ps aux | grep -v grep | grep selenium-server | awk '{print $2}') &> /dev/null
