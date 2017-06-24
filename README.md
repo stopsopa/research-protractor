@@ -131,6 +131,12 @@ chrome, firefox, edge and IE 11 from host mac machine should be already register
     
     explorer "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
     
+scripts to run at startup 
+
+    windows/start-tunnel.cmd
+    windows/start-selenium.cmd
+    
+    
 # Launch at startup Mac
     
 Following instructions from (https://www.davidbaumgold.com/tutorials/wine-mac/#making-a-dock-icon) compile app in **AppleScript Editor**
@@ -138,6 +144,10 @@ Following instructions from (https://www.davidbaumgold.com/tutorials/wine-mac/#m
     tell application "Terminal"
         do script "~/pathtoscript ~/.app/drive_c/Program\\ Files/start.sh"
     end tell
+    
+scripts to run at startup 
+
+    /bin/bash mac/start-selenium.sh
     
 [start.sh](https://github.com/stopsopa/research-protractor/blob/master/mac/startup.sh)
         
