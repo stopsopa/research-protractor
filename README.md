@@ -131,6 +131,13 @@ Following instructions from (https://www.davidbaumgold.com/tutorials/wine-mac/#m
     npm run start
     npm run stop
     npm run status
+    
+# VNC
+
+check https://github.com/stopsopa/research-protractor/blob/master/mac/vnc-tunnel.sh
+
+Before running that you should enable screen sharing in mac
+![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/vnc.jpg)
         
 # Usefull links
 
