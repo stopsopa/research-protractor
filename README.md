@@ -49,7 +49,6 @@ Then you can check if hub is up and running:
 
     http://123.234.123.234:4444/grid/console
     
-Hub should be now up and running... 
    
 # Setup Mac (host) node and configure browsers   
   
@@ -79,11 +78,16 @@ now go to *mac* folder in this git repository and execute two scripts. One to la
     cd mac
     /bin/bash start-selenium.sh 
 
-then check in the console status of node:
+then check in the browser (on mac) status of node:
+
+    http://localhost:5560/grid/console
+    
+and check hub in browser (anywhere) ...
 
     http://123.234.123.234:4444/grid/console
     
-chrome, firefox and safari from host mac machine should be already registered in hub.
+    
+... chrome, firefox and safari from host mac machine should be already registered with hub.
     
 # Creating and configuring virtual machine with Windows
     
@@ -120,12 +124,17 @@ better use 32 bit version instead of 64 bit [issues](http://elgalu.github.io/201
 
     cd windows
     start.cmd 123.234.123.234
+
+then check in the browser (on windows) status of node:
+
+    http://localhost:5560/grid/console
     
-then check in the console status of node:
+and check hub in browser (anywhere) ...
 
     http://123.234.123.234:4444/grid/console
     
-chrome, firefox, edge and IE 11 from host mac machine should be already registered in hub.
+    
+... chrome, firefox, edge and IE 11 from host mac machine should be already registered with hub.
     
 # Launch at startup Windows
     
