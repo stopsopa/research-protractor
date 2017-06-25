@@ -21,7 +21,7 @@ if [ "$1" != "stop" ]; then
         kill -9 $(ps aux | grep -v grep | grep ssh | grep $PORT | grep "\-R " | awk '{print $2}') &> /dev/null
         ssh root@$IP -N -R 0.0.0.0:$PORT:localhost:$PORT -i ../ssh/id_rsa & disown
         echo 'done';
-        sleep 120
+        sleep $((60 * 30))
     done	
 
 
