@@ -1,5 +1,8 @@
 'use strict';
 
+var cmdconfig = ['php', ['../bin/console', 'params']];
+cmdconfig = ['php', ['config.php']];
+
 const log = console.log;
 
 function json (arr) {
@@ -103,7 +106,7 @@ const config = (function () {
 
     function testEndpoint(url) {
 
-        const sel = sync('curl', [url, '-i']);
+        const sel = sync('curl', [url, '-i', '-L', '--max-time', '1']);
 
         return ! (
             sel.stdout.toString().indexOf('WebDriver Hub') === -1 && // single node endpoint
@@ -128,27 +131,38 @@ const config = (function () {
         process.exit(1);
     }
 
-    if ( testEndpoint(config.parameters.selenium_address_local) ) {
-        config.parameters.selenium_address = config.parameters.selenium_address_local
+    if (typeof config.parameters.selenium_address === 'string') {
+        config.parameters.selenium_address = [config.parameters.selenium_address];
     }
-    else {
-        if ( ! testEndpoint(config.parameters.selenium_address) ) {
-            process.stdout.write(
-                "Wrong curl response from endpoint : " +
-                config.parameters.selenium_address +
-                "\n\nstdout:\n" + sel.stdout.toString() +
-                "\n\nstderr:\n" + sel.stderr.toString() +
-                "\n\n"
-            );
-            process.exit(1);
+
+    config.parameters.selenium_address = (function (list) {
+        var t;
+        for (var i = 0, l = list.length ; i < l ; i += 1 ) {
+
+            t = list[i];
+
+            log('testing endpoint: ', t);
+
+            if (testEndpoint(t)) {
+                log('correct endpoint: ', t);
+                return t;
+            }
         }
-    }
+
+        process.stdout.write(
+            "None of endpoints seems to be available : " +
+            JSON.stringify(config.parameters.selenium_address, null, '    ') +
+            "\n\n"
+        );
+
+        process.exit(1);
+
+    }(config.parameters.selenium_address));
 
     cache.save(config, true);
 
     return config;
-// }('php', ['../bin/console', 'params']));
-}('php', ['config.php']));
+}.apply(this, cmdconfig));
 
 var exclude = (function () {
 

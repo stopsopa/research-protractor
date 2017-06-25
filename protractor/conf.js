@@ -6,6 +6,7 @@ var extensions = require('./extensions.js');
  * conf spec: https://github.com/angular/protractor/blob/5.1.2/lib/config.ts#L644
  */
 var config = extensions({
+    seleniumServerStartTimeout: 120000, // 1.5 min
     specs: [
         '../tests/e2e/**/*.spec.js' // for sauce labs test only local
     ],
