@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$1" == "rm" ]; then
+    rm -rf ./sessions/*.json
+    exit 0;
+fi
+
 echo "stopping hub & node"
 
 kill -9 $(ps aux | grep -v grep | grep selenium | grep -v $$ | awk '{print $2}')

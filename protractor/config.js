@@ -22,32 +22,39 @@ var config = extensions({
     multiCapabilities: [
         {
             browserName: "MicrosoftEdge",
-            platform: "WIN10"
+            platform: "WIN10",
+            flag: 'we'
         },
         {
             browserName: "internet explorer",
             version: '11',
-            platform: "WIN10"
+            platform: "WIN10",
+            flag: 'wi'
         },
         {
             browserName: "chrome",
-            platform: "WIN10"
+            platform: "WIN10",
+            flag: 'wc'
         },
         {
             browserName: "firefox",
-            platform: "WIN10"
+            platform: "WIN10",
+            flag: 'wf'
         },
         {
             browserName: "chrome",
-            platform: "macOS 10.12"
+            platform: "macOS 10.12",
+            flag: 'mc'
         },
         {
             browserName: "firefox",
-            platform: "macOS 10.12"
+            platform: "macOS 10.12",
+            flag: 'mf'
         },
         {
             browserName: "safari",
-            platform: "macOS 10.12"
+            platform: "macOS 10.12",
+            flag: 'ms'
         },
     ]
 });

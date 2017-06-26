@@ -240,9 +240,19 @@ var exclude = (function () {
         }
 
         if (notfound.length) {
-            log('-'.repeat(40) + "\n");
+            log('-'.repeat(40));
             log(':protractor: not found:', json(notfound));
-            log('-'.repeat(40) + "\n");
+            log('-'.repeat(40));
+        }
+
+        if (process.b && process.b) {
+
+            list = list.filter(function (b) {
+                return process.b.indexOf(b.flag) > -1;
+            });
+
+            log(':protractor: cli filtered', json(list));
+            log('-'.repeat(40));
         }
 
         log = function () {};
