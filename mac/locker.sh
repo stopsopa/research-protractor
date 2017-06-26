@@ -33,7 +33,7 @@ if [ "$1" == "watchdog" ]; then
     do
         TEST=$(/bin/bash $0 cpu)
         TEST=$(printf "%.0f" $TEST)
-        TEST=$(( TEST + 0 )) # CAST TO INT
+        TEST=$(( $TEST + 0 )) # CAST TO INT
         if [ $TEST -gt 90 ]; then
             /bin/bash $0 unlock
         fi
