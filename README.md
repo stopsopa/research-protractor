@@ -8,6 +8,7 @@ Table of contents
   * [Creating and configuring virtual machine with Windows](#creating-and-configuring-virtual-machine-with-windows)
   * [Launch at startup Windows](#launch-at-startup-windows)
   * [Launch at startup Mac](#launch-at-startup-mac)
+  * [Wakeup screen for safari](#wakeup-screen-for-safari)
   * [Cli](#cli)
   * [VNC access](#vnc-access)
   * [Usefull links](#usefull-links)
@@ -159,7 +160,14 @@ scripts to run at startup
     /bin/bash mac/startup.sh
     
 [start.sh](https://github.com/stopsopa/research-protractor/blob/master/mac/startup.sh)
-        
+
+# Wakeup screen for safari
+
+![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/energy-saver.jpg)
+![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/screen-saver.jpg)
+
+In start-selenium.sh is already implemented mechanizm to wakeup screen when cpu usage rise above 100% (change that if you need)
+
 # Cli
         
     node protractor.sh
