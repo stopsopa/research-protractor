@@ -20,6 +20,26 @@ fi
 
 if [ "$1" == "send" ]; then
     ssh root@123.123.123.123 "echo $(locked) > locked"
+    exit;
+fi
+
+if [ "$1" == "cpu" ]; then
+    ps -A -o %cpu | awk '{s+=$1} END {print s}'
+    exit;
+fi
+
+if [ "$1" == "watchdog" ]; then
+    while :
+    do
+        TEST=$(/bin/bash $0 cpu)
+        TEST=$(printf "%.0f" $TEST)
+        TEST=$(( TEST + 0 )) # CAST TO INT
+        if [ $TEST -gt 90 ]; then
+            /bin/bash $0 unlock
+        fi
+        printf .
+        sleep 0.5
+    done
 fi
 
 if [ "$1" == "loop" ]; then
