@@ -36,8 +36,10 @@ if [ "$1" == "watchdog" ]; then
         TEST=$(( $TEST + 0 )) # CAST TO INT
         if [ $TEST -gt 90 ]; then
             /bin/bash $0 unlock
+            printf u
+        else
+            printf .
         fi
-        printf .
         sleep 0.5
     done
 fi
