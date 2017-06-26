@@ -18,4 +18,17 @@ if [ "$1" == "unlock" ]; then
     exit;
 fi
 
+if [ "$1" == "send" ]; then
+    ssh root@123.123.123.123 "echo $(locked) > locked"
+fi
+
+if [ "$1" == "loop" ]; then
+    while :
+    do
+        /bin/bash $0 send
+        printf .
+        sleep 1
+    done
+fi
+
 echo $(locked);
