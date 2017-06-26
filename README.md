@@ -163,8 +163,8 @@ scripts to run at startup
 
 # Wakeup screen for safari
 
-![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/energy-saver.jpg)
-![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/screen-saver.jpg)
+![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/energy-saver.png)
+![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/screen-saver.png)
 
 In start-selenium.sh is already implemented mechanizm to wakeup screen when cpu usage rise above 100% (change that if you need)
 
