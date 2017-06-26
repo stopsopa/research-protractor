@@ -8,7 +8,7 @@ Table of contents
   * [Creating and configuring virtual machine with Windows](#creating-and-configuring-virtual-machine-with-windows)
   * [Launch at startup Windows](#launch-at-startup-windows)
   * [Launch at startup Mac](#launch-at-startup-mac)
-  * [NPM Command line](#npm-command-line)
+  * [Cli](#cli)
   * [VNC access](#vnc-access)
   * [Usefull links](#usefull-links)
 
@@ -160,9 +160,16 @@ scripts to run at startup
     
 [start.sh](https://github.com/stopsopa/research-protractor/blob/master/mac/startup.sh)
         
-# NPM Command line
+# Cli
         
-    npm run pr -- --specs ../tests/nong.js
+    node protractor.sh
+    node protractor.sh --specs ../test/ng.js
+    node protractor.sh --specs ../test/ng.js -b mc
+       # mac chrome
+    node protractor.sh --specs ../test/ng.js -b mcwewi
+       # mac chrome, windows edge, windows IE11
+       # more details look parameter "flag" under:
+       # https://github.com/stopsopa/research-protractor/blob/master/protractor/config.js#L22
     npm run start
     npm run stop
     npm run status
