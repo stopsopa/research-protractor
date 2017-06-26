@@ -1,0 +1,35 @@
+pmset displaysleepnow
+
+https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/pmset.1.html
+
+
+
+sleep 4 && caffeinate  -u -t 5
+https://apple.stackexchange.com/a/161527
+
+
+
+detect screen lock
+    create python script:
+        #!/usr/bin/python
+        import Quartz
+        d = Quartz.CGSessionCopyCurrentDictionary()
+        print d
+    chmod a+x ....
+
+    and test:
+        pmset displaysleepnow
+        sleep 1 && /usr/bin/python check.py
+
+
+
+
+
+
+
+pmset displaysleepnow
+sleep 4 && caffeinate -u -t 5
+
+
+
+
