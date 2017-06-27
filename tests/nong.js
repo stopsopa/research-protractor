@@ -11,11 +11,7 @@ describe('Protractor Demo App', function() {
 
         browser.find('#go');
 
-        browser.sleep(2000);
-
         $('#go').click();
-
-        browser.sleep(2000);
 
         expect($('div').getText().then((a) => a.trim())).toEqual("clicked");
     });
