@@ -136,6 +136,11 @@ and check hub in browser (anywhere) ...
     
     
 ... chrome, firefox, edge and IE 11 from host mac machine should be already registered with hub.
+
+Additionally is good to disable putting display to sleep:
+
+
+![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/power-settings.png)
     
 # Launch at startup Windows
     
