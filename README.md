@@ -18,10 +18,10 @@ Table of contents
 To prepare selenium server first is good to understand what and how we want to achieve.
 
 The general schema is:
-![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/schema.png)
+![schema](https://stopsopa.github.io/research-protractor/img/schema.png)
 
 end result (visual):
-![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/desktop.jpg)
+![schema](https://stopsopa.github.io/research-protractor/img/desktop.jpg)
 
 
 On schema we can see that two selenium nodes (one on host mac and another form windows on virtual machine) gonna register themselvs to hub. From now on hub will spread instructions betwen two nodes and will be able to control browsers automatically. 
@@ -74,7 +74,7 @@ now go to *mac* folder in this git repository and execute two scripts. One to la
 (before running this below commands, make sure that you have authorised ssh key in under path *../ssh/id_rsa* to connect to server)
 
 (also check if [*Allow Remote Automation*](https://webkit.org/blog/6900/webdriver-support-in-safari-10/) in Safari is enabled)
-![Allow Remote Automation](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/safari-dev.jpg)
+![Allow Remote Automation](https://stopsopa.github.io/research-protractor/img/safari-dev.jpg)
 
     cd mac
     /bin/bash start-selenium.sh 
@@ -118,7 +118,7 @@ http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/#step4
 
 img copy because article is not new and there is risk that it can disappear:
 google(Run Protractor Against Internet Explorer VM elgulu)
-![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/ie11-setup.jpg)
+![image copy of page](https://stopsopa.github.io/research-protractor/img/ie11-setup.jpg)
 
 source for IEWebdriver : http://selenium-release.storage.googleapis.com/
 better use 32 bit version instead of 64 bit [issues](http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/#step5)
@@ -140,7 +140,7 @@ and check hub in browser (anywhere) ...
 Additionally is good to disable putting display to sleep:
 
 
-![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/power-settings.png)
+![schema](https://stopsopa.github.io/research-protractor/img/power-settings.png)
     
 # Launch at startup Windows
     
@@ -168,8 +168,8 @@ scripts to run at startup
 
 # Wakeup screen for safari
 
-![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/energy-saver.png)
-![image copy of page](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/screen-saver.png)
+![image copy of page](https://stopsopa.github.io/research-protractor/img/energy-saver.png)
+![image copy of page](https://stopsopa.github.io/research-protractor/img/screen-saver.png)
 
 In start-selenium.sh is already implemented mechanizm to wakeup screen when cpu usage rise above 100% (change that if you need)
 
@@ -192,7 +192,7 @@ In start-selenium.sh is already implemented mechanizm to wakeup screen when cpu 
 check https://github.com/stopsopa/research-protractor/blob/master/mac/vnc-tunnel.sh
 
 Before running that you should enable screen sharing in mac
-![schema](https://raw.githubusercontent.com/stopsopa/research-protractor/master/doc/vnc.jpg)
+![schema](https://stopsopa.github.io/research-protractor/img/vnc.jpg)
         
 # Usefull links
 
