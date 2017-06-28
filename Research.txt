@@ -1,0 +1,1 @@
+http://seleniumcamp.com/talk/protractor-framework-how-to-make-stable-e2e-tests-for-angular-applications/
