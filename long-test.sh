@@ -5,11 +5,11 @@ do
     /bin/bash mac/locker.sh
     cd protractor
 
-    OUTPUT=$(node protractor.js --specs ../tests/nong.js)
+    OUTPUT=$(node protractor.js --specs ../tests/complex.js)
     echo $?
     echo "$OUTPUT" | tail -n 8
 
-    OUTPUT=$(node protractor.js --specs ../tests/nong.js)
+    OUTPUT=$(node protractor.js --specs ../tests/complex.js)
     echo $?
     echo "$OUTPUT" | tail -n 8
 
