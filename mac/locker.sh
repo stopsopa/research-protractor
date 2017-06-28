@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config.sh nosshkey
+source config.sh
 
 function locked {
     if [ "$(python -c "import Quartz;d = Quartz.CGSessionCopyCurrentDictionary();print d" | grep CGSSessionScreenIsLocked)" == "" ]; then

@@ -2,6 +2,9 @@
 
 source config.sh
 
+ssh-add ../ssh/id_rsa
+chmod 600 ../ssh/id_rsa
+
 /bin/bash start-tunnel.sh 
 
 kill -9 $(ps aux | grep -v grep | grep vnc-tunnel | awk '{print $2}') &> /dev/null
