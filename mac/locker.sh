@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config.sh
+
 function locked {
     if [ "$(python -c "import Quartz;d = Quartz.CGSessionCopyCurrentDictionary();print d" | grep CGSSessionScreenIsLocked)" == "" ]; then
         echo "unlocked";
@@ -19,7 +21,7 @@ if [ "$1" == "unlock" ]; then
 fi
 
 if [ "$1" == "send" ]; then
-    ssh root@123.123.123.123 "echo $(locked) > locked"
+    ssh root@$HOST "echo $(locked) > locked"
     exit;
 fi
 
