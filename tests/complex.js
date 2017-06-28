@@ -13,8 +13,10 @@ describe('Protractor Demo App', function() {
     }
 
     beforeEach(function() {
-        // browser.angular(false);
+        browser.angular(false);
         browser.get('http://juliemr.github.io/protractor-demo/');
+
+        browser.waitSelector('#gobutton', 5000);
         // browser.waitSelector('#gobutton');
         // browser.find('#gobutton');
     });
@@ -25,7 +27,19 @@ describe('Protractor Demo App', function() {
 
     it('should add one and two', function() {
         add(1, 2);
-        expect(latestResult.getText()).toEqual('3');
+
+        // return protractor.ExpectedConditions.js(createFunction(name));
+
+        browser.waitJs(function () {
+            var h2 = document.querySelector('h2');
+            if (h2 && h2.innerText === '3') {
+                return h2.innerText;
+            }
+            return false;
+        }, 5000).then(function (d) {
+            expect(d).toEqual('3');
+        });
+        // expect(latestResult.getText()).toEqual('3');
         browser.sleep(2000);
     });
     //

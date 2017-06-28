@@ -349,10 +349,12 @@ return false;
         }());
 
         browser.waitSelector = function (selector, timeout) {
-            browser.wait(protractor.ExpectedConditions.js(Function(`
-return !!document.querySelector('${selector}');            
-            `)), timeout);
+            browser.wait(protractor.ExpectedConditions.presenceOf($(selector)), timeout);
         }
+        // browser.waitContain = function (selector, contain, timeout) {
+        //     browser.waitSelector(selector, timeout);
+        //
+        // }
 
         /**
          * call only browser.angular(false)
