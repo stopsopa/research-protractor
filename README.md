@@ -12,6 +12,7 @@ Table of contents
   * [Cli](#cli)
   * [VNC access](#vnc-access)
   * [Usefull links](#usefull-links)
+  * [Known issues](#known-issues)
 
 # Overview
 
@@ -213,3 +214,8 @@ ExpectedConditions:
 testing not angular:
     
 - https://github.com/sakshisingla/Protractor-Non-Angular-Tests/wiki/Creating-test-scripts-using-Protractor-for-non-angular-application
+
+# Known issues
+
+- [slow clicking ie11](https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/5116)
+- [Safari - angular not found](https://github.com/angular/protractor/issues/3118)

@@ -348,6 +348,12 @@ return false;
             };
         }());
 
+        browser.waitSelector = function (selector, timeout) {
+            browser.wait(protractor.ExpectedConditions.js(Function(`
+return !!document.querySelector('${selector}');            
+            `)), timeout);
+        }
+
         /**
          * call only browser.angular(false)
          * calling browser.angular(true) is default
@@ -372,7 +378,7 @@ return false;
             /**
              * don't wait for angular $timeout
              */
-            browser.ignoreSynchronization = !mode;
+            // browser.ignoreSynchronization = !mode;
 
             browser.waitForAngularEnabled(mode);
 
@@ -395,13 +401,16 @@ return false;
 
             browser.executeScript(fn);
 
-            browser.sleep(sleep || 2000);
+            if (sleep) {
+                browser.sleep(sleep);
+            }
         }
     }
 
     if (data) {
 
         data.onPrepare = onPrepare;
+        // data.onPrepare = function () {};
 
         return data;
     }
