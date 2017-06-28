@@ -1,5 +1,8 @@
 HOST=123.123.123.123
 
-ssh-add ../ssh/id_rsa
-chmod 600 ../ssh/id_rsa
+if [ "$1" != "nosshkey" ]; then
+    ssh-add ../ssh/id_rsa
+    chmod 600 ../ssh/id_rsa
+fi
+
 
