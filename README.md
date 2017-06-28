@@ -64,9 +64,9 @@ Make sure that you have installed:
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](https://www.vagrantup.com/downloads.html)
    
-Clone this git repository and change value of parameter **HOST** in this file to ip of your server for host, then go to **mac** folder in this git repository and execute two scripts. One to launch ssh tunnel and another to launch node:
+Clone this git repository and change value of parameter **HOST** in this file to ip of your server for host.
 
-(before running this below commands, make sure that you have authorised ssh key in under path *../ssh/id_rsa* to connect to server)
+(before running this below commands, make sure that you have authorised ssh key in under path **../ssh/id_rsa** to connect to server)
 
 (also check if [*Allow Remote Automation*](https://webkit.org/blog/6900/webdriver-support-in-safari-10/) in Safari is enabled)
 ![Allow Remote Automation](https://stopsopa.github.io/research-protractor/img/safari-dev.jpg)
