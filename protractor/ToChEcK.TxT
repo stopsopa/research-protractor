@@ -1,0 +1,5 @@
+
+increse DEFAULT_TIMEOUT_INTERVAL by default:
+    https://jasmine.github.io/2.1/introduction#section-48
+
+

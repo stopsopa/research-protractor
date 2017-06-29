@@ -22,4 +22,4 @@ chmod 600 ../ssh/id_rsa
 
 /bin/bash locker.sh watchdog & disown
 
-java -jar ../selenium-server-standalone-3.4.0.jar -role node -port 5560 -host 127.0.0.1 -hub http://$HOST:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" -browser "browserName=firefox, maxInstances=10, platform=SIERRA" -browser "browserName=safari, maxInstances=10, platform=SIERRA"
+java -jar ../selenium-server-standalone-3.4.0.jar -role node -port $MACPORT -host 127.0.0.1 -hub http://$HOST:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" -browser "browserName=firefox, maxInstances=10, platform=SIERRA" -browser "browserName=safari, maxInstances=10, platform=SIERRA"

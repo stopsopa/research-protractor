@@ -394,18 +394,20 @@ return false;
 
         /**
          * Tool to search elements on page
+         * @param selector
+         * @param timeout - if given then waint until element will show up on the page
          */
-        browser.find = function (selector, sleep) {
+        browser.find = function (selector, timeout) {
 
-            var fn = `document.querySelectorAll('${selector}').forEach(function(a, b){(function loop(a, c){a.setAttribute('style','display:block!important;'+(c?('border: 4px dashed '+((b===0)?'red':'blue')):''));a.parentNode&&a.parentNode.style&&loop(a.parentNode)})(a, true)});`;
+            if (timeout) {
+                browser.waitSelector(selector, timeout);
+            }
+
+            var fn = `﻿Array.prototype.slice.call(document.querySelectorAll('${selector}')).forEach(function(a, b){(function loop(a, c){a.setAttribute('style','display:block!important;'+(c?('border: 4px dashed '+((b===0)?'red':'blue')):''));a.parentNode&&a.parentNode.style&&loop(a.parentNode)})(a, true)});`;
 
             fn = Function(fn);
 
             browser.executeScript(fn);
-
-            if (sleep) {
-                browser.sleep(sleep);
-            }
         }
     }
 
