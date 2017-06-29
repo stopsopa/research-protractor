@@ -397,7 +397,7 @@ return false;
          */
         browser.find = function (selector, sleep) {
 
-            var fn = `document.querySelector('${selector}').style.border = '4px solid red'`;
+            var fn = `document.querySelectorAll('${selector}').forEach(function(a, b){(function loop(a, c){a.setAttribute('style','display:block!important;'+(c?('border: 4px dashed '+((b===0)?'red':'blue')):''));a.parentNode&&a.parentNode.style&&loop(a.parentNode)})(a, true)});`;
 
             fn = Function(fn);
 
