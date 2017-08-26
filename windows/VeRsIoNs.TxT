@@ -1,0 +1,12 @@
+The Internet Explorer Driver Server
+    IEDriverServer_x64_3.5.1
+
+edge driver:
+    https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+    Release 14393
+    Version: 3.14393 | Edge version supported: 14.14393
+
+
+
+
+

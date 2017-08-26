@@ -1,6 +1,19 @@
 Firefox
-    https://github.com/mozilla/geckodriver/releases
-    v0.17.0
+    current 
+        https://github.com/mozilla/geckodriver/releases/tag/v0.18.0
+        v0.18.0
+        
+    prev version:
+        https://github.com/mozilla/geckodriver/releases
+        v0.17.0
+
 Chrome:
-    https://sites.google.com/a/chromium.org/chromedriver/downloads
-    ChromeDriver 2.30
+    current:
+        https://chromedriver.storage.googleapis.com/index.html?path=2.31/
+        Latest Release: ChromeDriver 2.31
+        Supports Chrome v58-60
+        chromedriver_mac64.zip	2017-07-22 01:55:40	4.93MB	b77c9c71b52302fcfe6b40dcd143f1d0
+
+    prev version:
+        https://sites.google.com/a/chromium.org/chromedriver/downloads
+        ChromeDriver 2.30
