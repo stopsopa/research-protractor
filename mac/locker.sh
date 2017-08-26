@@ -2,7 +2,6 @@
 
 THISFILE=${BASH_SOURCE[0]}
 DIR="$( cd "$( dirname "${THISFILE}" )" && pwd -P )"
-echo $DIR;
 
 source "$DIR/config.sh"
 
