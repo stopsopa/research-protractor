@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source config.sh
+THISFILE=${BASH_SOURCE[0]}
+DIR="$( cd "$( dirname "${THISFILE}" )" && pwd -P )"
+echo $DIR;
+
+source "$DIR/config.sh"
 
 function locked {
     if [ "$(python -c "import Quartz;d = Quartz.CGSessionCopyCurrentDictionary();print d" | grep CGSSessionScreenIsLocked)" == "" ]; then

@@ -7,10 +7,12 @@ do
 
     OUTPUT=$(node protractor.js --specs ../tests/complex.js)
     echo $?
+    echo "status:$?"
     echo "$OUTPUT" | tail -n 8
 
     OUTPUT=$(node protractor.js --specs ../tests/complex.js)
     echo $?
+    echo "status:$?"
     echo "$OUTPUT" | tail -n 8
 
     cd ..

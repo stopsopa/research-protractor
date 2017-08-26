@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source config.sh
+THISFILE=${BASH_SOURCE[0]}
+DIR="$( cd "$( dirname "${THISFILE}" )" && pwd -P )"
+echo $DIR;
+
+source "$DIR/config.sh"
 
 ssh-add ../ssh/id_rsa
 chmod 600 ../ssh/id_rsa
