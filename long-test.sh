@@ -8,11 +8,13 @@ do
     OUTPUT=$(node protractor.js --specs ../tests/complex.js)
     echo $?
     echo "status:$?"
+    echo "status warmup:$?"
     echo "$OUTPUT" | tail -n 8
 
     OUTPUT=$(node protractor.js --specs ../tests/complex.js)
     echo $?
     echo "status:$?"
+    echo "status real:$?"
     echo "$OUTPUT" | tail -n 8
 
     cd ..
