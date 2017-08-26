@@ -37,7 +37,7 @@ Our server will have public ip 123.234.123.234
 
 # Building HUB:
 
-WGET selenium jar file (currently [3.4.0](http://www.seleniumhq.org/download/))
+WGET selenium jar file (currently [3.5.2](http://www.seleniumhq.org/download/))
 
 Then download [hub.sh](https://github.com/stopsopa/research-protractor/blob/master/server/hub.sh) to the same directory and run:
 

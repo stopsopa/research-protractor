@@ -1,4 +1,5 @@
 chromedriver
 geckodriver
 selenium-server-standalone-3.4.0.jar
+selenium-server-standalone-3.5.2.jar
 config.php
