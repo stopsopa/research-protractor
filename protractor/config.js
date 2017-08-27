@@ -19,6 +19,8 @@ var config = extensions({
     // http://www.protractortest.org/#/control-flow#disabling-the-control-flow
     SELENIUM_PROMISE_MANAGER: true,
 
+
+    // https://github.com/SeleniumHQ/selenium/blob/master/java/server/src/org/openqa/grid/common/defaults/DefaultNodeWebDriver.json
     multiCapabilities: [
         {
             browserName: "MicrosoftEdge",

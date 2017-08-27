@@ -2,6 +2,7 @@ The Internet Explorer Driver Server
     WARNING !!!: 
         USE 32 BIT VERSION
         https://github.com/angular/webdriver-manager/blob/master/docs/versions.md#download-using---ie
+    https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver#required-configuration
     IEDriverServer_x64_3.5.1
 
 edge driver:

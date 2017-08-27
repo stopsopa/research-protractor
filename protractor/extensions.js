@@ -213,6 +213,10 @@ var exclude = (function () {
 
         for (var i = 0, l = declaredcp.length ; i < l ; i += 1 ) {
             for (var ii = 0, ll = available.length ; ii < ll ; ii += 1 ) {
+                if ( ! declaredcp[i].platform ) {
+                    log("Error: On protractor side you should define 'platform' value, (copy from hub configuration http://x.x.x.x:4444/grid/console). Missing field found in declaration: ", JSON.stringify(declaredcp[i], null, '    '));
+                    process.exit(1);
+                }
                 if (declaredcp[i].browsername === available[ii].browsername && declaredcp[i].platform === available[ii].platform) {
                     list.push(declared[i])
                     break;
@@ -235,7 +239,7 @@ var exclude = (function () {
         log(':protractor: final:', json(list));
 
         if (!list.length) {
-            log("Not found even one matching browser");
+            log("Error: Not found even one matching browser");
             process.exit(1);
         }
 

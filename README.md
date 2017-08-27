@@ -113,6 +113,9 @@ http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/#step4
 
 img copy because article is not new and there is risk that it can disappear:
 google(Run Protractor Against Internet Explorer VM elgulu)
+
+Folow required configuration for IEDriver [https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver#required-configuration]
+
 ![image copy of page](https://stopsopa.github.io/research-protractor/img/ie11-setup.jpg)
 
 source for IEWebdriver : http://selenium-release.storage.googleapis.com/
