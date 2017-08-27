@@ -24,8 +24,8 @@ if [ "$1" != "stop" ]; then
         chmod a+x geckodriver
     fi
 
-    java -jar selenium-server-standalone-3.5.2.jar -role hub & disown
-    java -jar selenium-server-standalone-3.5.2.jar -role node -port 5555 -host 127.0.0.1 -hub http://localhost:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" -browser "browserName=firefox, maxInstances=10, platform=SIERRA" -browser "browserName=safari, maxInstances=10, platform=SIERRA" & disown
+    java -jar selenium-server-standalone-3.4.0.jar -role hub & disown
+    java -jar selenium-server-standalone-3.4.0.jar -role node -port 5555 -host 127.0.0.1 -hub http://localhost:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" -browser "browserName=firefox, maxInstances=10, platform=SIERRA" -browser "browserName=safari, maxInstances=10, platform=SIERRA" & disown
 
     sleep 8
 

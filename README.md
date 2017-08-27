@@ -232,6 +232,7 @@ known issues:
     
 https://github.com/angular/protractor/issues/4445#issuecomment-323288177
 
+looks like problem with unstable latest release of selenium.. wait for another update/fix :/
 
 
 ---

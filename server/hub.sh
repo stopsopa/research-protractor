@@ -8,5 +8,5 @@ echo 'is killed?'
 
 if [ "$1" != "stop" ]; then
     echo "starting hub"
-    java -jar ../selenium-server-standalone-3.5.2.jar -role hub & disown
+    java -jar ../selenium-server-standalone-3.4.0.jar -role hub & disown
 fi

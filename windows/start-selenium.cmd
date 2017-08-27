@@ -1,4 +1,4 @@
-java -jar ..\selenium-server-standalone-3.5.2.jar ^
+java -jar ..\selenium-server-standalone-3.4.0.jar ^
 -role node ^
 -port 5559 ^
 -host 127.0.0.1 ^
