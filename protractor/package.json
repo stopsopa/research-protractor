@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "protractor": "^5.1.2"
+    "protractor": "^5.1"
   },
   "scripts": {
     "status": "curl localhost:4444 &> /dev/null && echo 'local' || echo 'public'",

@@ -213,3 +213,24 @@ testing not angular:
 
 - [slow clicking ie11](https://github.com/seleniumhq/selenium-google-code-issue-archive/issues/5116)
 - [Safari - angular not found](https://github.com/angular/protractor/issues/3118)
+
+# Updating selenium and webdrivers
+
+known issues:
+
+
+---
+
+
+
+    [11:20:06] E/runner - Unable to start a WebDriver session.
+    [11:20:06] E/launcher - Error: WebDriverError: Invalid timeout type specified: ms
+    
+    
+https://github.com/angular/protractor/issues/4445#issuecomment-323288177
+
+
+
+---
+
+ 
