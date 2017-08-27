@@ -8,8 +8,12 @@ The Internet Explorer Driver Server
 edge driver:
     MicrosoftWebDriver.exe
     https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
-    Release 14393
-    Version: 3.14393 | Edge version supported: 14.14393
+    current: (updated after windows update)
+        Release 15063
+        Version: 4.15063 | Edge version supported: 15.15063 
+    prev version:
+        Release 14393
+        Version: 3.14393 | Edge version supported: 14.14393
 
 
 
