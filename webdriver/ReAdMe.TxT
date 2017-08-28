@@ -14,6 +14,14 @@ webdriver spec:
 javascript way:
     https://www.browserstack.com/automate/node
 
+read more:
+    https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md
+    https://facebook.github.io/jest/blog/2017/05/06/jest-20-delightful-testing-multi-project-runner.html
+    https://marmelab.com/blog/2016/04/19/e2e-testing-with-node-and-es6.html
+
+read about webdriver api:
+    elementLocated:
+        https://github.com/chrisprice/react-app-webdriver#writing-page-objects
 
 
 

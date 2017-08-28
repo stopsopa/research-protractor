@@ -1,5 +1,17 @@
 {
   "dependencies": {
-    "selenium-webdriver": "^3.5.0"
+    "color": "^2.0.0",
+    "jest": "^20.0.4",
+    "selenium-webdriver": "^3.5.0",
+    "yes": "^1.1.1"
+  },
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch" : [
+      "**/*.test.js"
+    ]
   }
 }
