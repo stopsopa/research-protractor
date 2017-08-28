@@ -42,7 +42,7 @@ try {
         })
         .then((element) => {
             log('div found');
-            return element.getTexty();
+            return element.getText();
         })
         .then((text) => {
             log('text', text)
