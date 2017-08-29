@@ -7,6 +7,7 @@ Table of contents
   * [Setup Mac (host) node and configure browsers](#setup-mac-host-node-and-configure-browsers)
   * [Creating and configuring virtual machine with Windows](#creating-and-configuring-virtual-machine-with-windows)
   * [Launch at startup Windows](#launch-at-startup-windows)
+    * [Microsoft Edge configuration](#microsoft-edge-configuration)
   * [Launch at startup Mac](#launch-at-startup-mac)
   * [Wakeup screen for safari](#wakeup-screen-for-safari)
   * [Cli](#cli)
