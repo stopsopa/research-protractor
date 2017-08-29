@@ -149,6 +149,11 @@ scripts to run at startup
     windows/start-tunnel.cmd
     windows/start-selenium.cmd
     
+## Microsoft Edge configuration
+
+
+![edge configuration](https://stopsopa.github.io/research-protractor/img/edge.jpg)    
+    
     
 # Launch at startup Mac
     
