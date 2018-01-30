@@ -16,8 +16,8 @@ if [ "$1" != "stop" ]; then
     echo "starting hub & node"
 
     if [ ! -f geckodriver ]; then
-        curl -O https://raw.githubusercontent.com/stopsopa/research-protractor/master/mac/chromedriver
         curl -O https://raw.githubusercontent.com/stopsopa/research-protractor/master/mac/geckodriver
+        curl -O https://raw.githubusercontent.com/stopsopa/research-protractor/master/mac/chromedriver
         curl -O https://raw.githubusercontent.com/stopsopa/research-protractor/master/selenium-server-standalone-3.4.0.jar
 
         chmod a+x chromedriver
@@ -25,7 +25,10 @@ if [ "$1" != "stop" ]; then
     fi
 
     java -jar selenium-server-standalone-3.4.0.jar -role hub & disown
+#    java -jar selenium-server-standalone-3.4.0.jar -role node -port 5555 -host 127.0.0.1 -hub http://localhost:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" & disown
     java -jar selenium-server-standalone-3.4.0.jar -role node -port 5555 -host 127.0.0.1 -hub http://localhost:4444/grid/register -browser "browserName=chrome, maxInstances=10, platform=SIERRA" -browser "browserName=firefox, maxInstances=10, platform=SIERRA" -browser "browserName=safari, maxInstances=10, platform=SIERRA" & disown
+
+    # java -jar selenium-server-standalone-3.4.0.jar -role node -port 5555 -browser "browserName=chrome, maxInstances=10, platform=SIERRA"
 
     sleep 8
 

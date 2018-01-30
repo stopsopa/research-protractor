@@ -14,6 +14,7 @@ Table of contents
   * [VNC access](#vnc-access)
   * [Usefull links](#usefull-links)
   * [Known issues](#known-issues)
+  * [Further research]
 
 # Overview
 
@@ -242,5 +243,11 @@ looks like problem with unstable latest release of selenium.. wait for another u
 
 
 ---
+
+# Further research
+
+* http://www.webdriverjs.com/protractor-vs-webdriverio-vs-nightwatch/
+* https://github.com/nightwatchjs/nightwatch/
+* https://github.com/webdriverio/webdriverio/
 
  

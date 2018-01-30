@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jest": "^22.1.4",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js"
+  }
+}

@@ -2,6 +2,8 @@
 
 echo "stopping hub"
 
+echo "working directory: $(pwd)"
+
 kill -9 $(ps aux | grep -v grep | grep selenium | grep -v $$ | awk '{print $2}')
 
 echo 'is killed?'
