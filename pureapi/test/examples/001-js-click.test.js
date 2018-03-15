@@ -9,12 +9,15 @@ describe('nong', async () => {
 
     beforeAll(async () => {
 
-        driver = await require(path.resolve(__dirname, '..', 'config.js'));
+        driver = await require(path.resolve(__dirname, '..', '..', 'driver.js'));
     });
 
     it('nong', async () => {
 
-        await driver.get('https://stopsopa.github.io/research-protractor/e2e/ng.html');
+         // https://stopsopa.github.io/research-protractor/e2e/angular-calc/calc.html
+        await driver.getTestServer('/001-js-click/index.html');
+
+        await promise.delayed(2000);
 
         let button = await driver.findElement(By.id('go'));
 
@@ -22,7 +25,7 @@ describe('nong', async () => {
 
         await button.click();
 
-        // await promise.delayed(2000);
+        await promise.delayed(2000);
 
         expect(await div.getText()).toBe('clicked');
     });
