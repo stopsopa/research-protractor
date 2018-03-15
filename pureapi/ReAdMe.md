@@ -5,6 +5,7 @@ At the moment of writing this doc 4.0.0-alpha.1
 * !!! http://seleniumhq.github.io/selenium/docs/api/javascript/
 * https://www.npmjs.com/package/selenium-webdriver
 * [very good examples - check dir up too](https://github.com/SeleniumHQ/selenium/tree/master/javascript/node/selenium-webdriver/test)
+* https://seleniumhq.github.io/docs/index.html
 
 # more about jest:
     
@@ -27,3 +28,7 @@ http://www.protractortest.org/#/control-flow#disabling-the-control-flow
 # check later
  
 * [Executing script](https://sqa.stackexchange.com/a/20736)
+
+# more about testing in general:
+    
+* http://blog.thecodewhisperer.com/permalink/integrated-tests-are-a-scam

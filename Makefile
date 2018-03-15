@@ -1,7 +1,10 @@
 # local intance of selenium
 
-local:
-	cd pureapi && /bin/bash cli_just_chrome_locally.sh
+sel: selenium-start
+sels: selenium-stop
 
-localstop:
+selenium-start:
+	cd pureapi && /bin/bash cli_just_chrome_locally_ensure.sh
+
+selenium-stop:
 	cd pureapi && /bin/bash cli_just_chrome_locally.sh stop
