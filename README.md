@@ -1,4 +1,13 @@
 
+# DEPRECATED
+Created in 2017 - quite old now and not maintained.
+
+It was wild ride failed experiment in attempt to find reliable end to end testing library which could be run from Docker in CI/CI without paying obscene fees to SAS providers (mainly SouceLabs or Browserify at that time).
+
+Experiment was failed because none of tested E2E libraries were stable in dockerized environment - wchich was a schame.
+
+Today you can just use playwright which run in Docker perfectly - at lest that's current state of art (Sep 2023).
+
 Table of contents
 =================
 
